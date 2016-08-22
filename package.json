@@ -1,0 +1,39 @@
+{
+  "name": "riddles4u",
+  "version": "1.0.0",
+  "description": "Amazing riddles game platform with dynamic content loading. ",
+  "main": "src/index.html",
+  "dependencies": {
+    "babel-core": "^6.13.2",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BigBlackCode/riddles4u.git"
+  },
+  "keywords": [
+    "Game",
+    "Riddes",
+    "Open",
+    "Source",
+    "Dynamic",
+    "Content"
+  ],
+  "author": "BigBlackCode",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/BigBlackCode/riddles4u/issues"
+  },
+  "homepage": "https://github.com/BigBlackCode/riddles4u#readme"
+}
