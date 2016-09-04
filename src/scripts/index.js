@@ -9,6 +9,7 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+import '../styles/index.pcss';
 import {registerRoutes} from './routes';
 
 registerRoutes();
