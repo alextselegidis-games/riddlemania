@@ -11,17 +11,5 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-require_once 'autoload.php';
-require_once 'config.php';
-
-/**
- * Backend API Access File
- *
- * Supported Operations:
- *
- * - Get Riddle Question
- * - Check Riddle Answer
- * - Get Ad Image
- * - Redirect To Ad URL
- */
-
+define('STORAGE_RIDDLES_PATH', 'storage/riddles');
+define('STORAGE_LOGS_PATH', 'storage/logs');

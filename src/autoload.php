@@ -1,9 +1,9 @@
 <?php
 
 /* ----------------------------------------------------------------------------
- * Riddles4u - Amazing Riddles Game Platform
+ * Riddles4U - Amazing Riddles Game Platform
  *
- * @package     Riddles4u
+ * @package     Riddles4U
  * @author      Alex Tselegidis <alextselegidis@gmail.com>
  * @copyright   Copyright (c) 2016, BigBlackCode
  * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
