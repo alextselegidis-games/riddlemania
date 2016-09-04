@@ -12,6 +12,7 @@
 var development = process.env.NODE_ENV !== 'production';
 var webpack = require('webpack');
 var plugins = [];
+var path = require('path');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 var color = require('postcss-color-function');
@@ -24,10 +25,10 @@ if (!development) {
 
 module.exports = {
     devtool: development ? 'source-map' : '',
-    context: __dirname + '/src',
+    context: path.resolve(__dirname, 'src'),
     entry: './scripts/index.js',
     output: {
-        path: __dirname + '/src/assets',
+        path: path.resolve(__dirname, 'src/assets'),
         filename: 'scripts.js'
     },
     module: {

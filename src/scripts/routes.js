@@ -11,14 +11,41 @@
 
 import page from 'page';
 
-const routes = [
-    () => {
+// Controllers
+import About from './controllers/About';
+import FamousRiddles from './controllers/FamousRiddles';
+import Instructions from './controllers/Instructions';
+import MainMenu from './controllers/MainMenu';
+import Riddle from './controllers/Riddle';
 
-}
-];
+// Components
+import AnswerBox from './components/AnswerBox';
+import ContentBox from './components/ContentBox';
+import LanguageSwitch from './components/LanguageSwitch';
+import MenuBox from './components/MenuBox';
+import MenuItem from './components/MenuItem';
+import SocialShare from './components/SocialShare';
 
-export default function registerRoutes() {
-    for (route of routes) {
-        route();
+const components = {
+    AnswerBox,
+    ContentBox,
+    LanguageSwitch,
+    MenuBox,
+    MenuItem,
+    SocialShare
+};
+
+const routes = {
+    '/': new MainMenu(components),
+    '/about': new About(components),
+    '/famous-riddles': new FamousRiddles(components),
+    '/instructions': new Instructions(components),
+    '/riddles/:riddle': new Riddle(components)
+};
+
+export function registerRoutes() {
+    for (let route in routes) {
+        routes[route].register(page, route);
     }
+    page();
 }

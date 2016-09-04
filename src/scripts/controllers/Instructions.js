@@ -8,3 +8,23 @@
  * @link        http://riddles4u.com
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
+
+class Instructions {
+    constructor(components) {
+        this.components = components;
+    }
+
+    register(page, route) {
+
+    }
+
+    load(context, next) {
+
+    }
+
+    display(content, next) {
+
+    }
+}
+
+export default Instructions;

@@ -9,3 +9,22 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+class MainMenu {
+    constructor(components) {
+        this.components = components;
+    }
+
+    register(page, route) {
+
+    }
+
+    load(context, next) {
+
+    }
+
+    display(content, next) {
+
+    }
+}
+
+export default MainMenu;
