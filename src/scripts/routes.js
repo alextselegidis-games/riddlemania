@@ -44,6 +44,8 @@ const routes = {
 };
 
 export function registerRoutes() {
+    page.base(location.pathname);
+
     for (let route in routes) {
         routes[route].register(page, route);
     }

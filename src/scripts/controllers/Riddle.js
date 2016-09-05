@@ -15,7 +15,7 @@ class Riddle {
     }
 
     register(page, route) {
-
+        page(route, this.load, this.display);
     }
 
     load(context, next) {

@@ -15,15 +15,11 @@ class MainMenu {
     }
 
     register(page, route) {
-
+        page(route, this.display);
     }
 
-    load(context, next) {
-
-    }
-
-    display(content, next) {
-
+    display() {
+        debugger;
     }
 }
 

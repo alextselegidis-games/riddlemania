@@ -15,14 +15,14 @@ class Instructions {
     }
 
     register(page, route) {
+        page(route, this.load, this.display);
+    }
+
+    load() {
 
     }
 
-    load(context, next) {
-
-    }
-
-    display(content, next) {
+    display() {
 
     }
 }
