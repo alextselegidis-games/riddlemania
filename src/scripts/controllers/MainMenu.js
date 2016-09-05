@@ -12,14 +12,16 @@
 class MainMenu {
     constructor(components) {
         this.components = components;
+        this.template = require('../../templates/controllers/MainMenu.html');
     }
 
     register(page, route) {
-        page(route, this.display);
+        page(route, () => this.display());
     }
 
     display() {
-        debugger;
+        const content = document.getElementById('content');
+        content.innerHTML = this.template();
     }
 }
 
