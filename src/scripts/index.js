@@ -11,5 +11,8 @@
 
 import '../styles/index.pcss';
 import {registerRoutes} from './routes';
+import {registerErrorHandler} from './errors';
 
 registerRoutes();
+registerErrorHandler();
+
