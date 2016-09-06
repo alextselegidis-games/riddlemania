@@ -10,37 +10,16 @@
  * ---------------------------------------------------------------------------- */
 
 import page from 'page';
-
-// Controllers
-import About from './controllers/About';
-import FamousRiddles from './controllers/FamousRiddles';
-import Instructions from './controllers/Instructions';
-import MainMenu from './controllers/MainMenu';
-import Riddle from './controllers/Riddle';
-
-// Components
-import AnswerBox from './components/AnswerBox';
-import ContentBox from './components/ContentBox';
-import LanguageSwitch from './components/LanguageSwitch';
-import MenuBox from './components/MenuBox';
-import MenuItem from './components/MenuItem';
-import SocialShare from './components/SocialShare';
-
-const components = {
-    AnswerBox,
-    ContentBox,
-    LanguageSwitch,
-    MenuBox,
-    MenuItem,
-    SocialShare
-};
+import controllers from './controllers';
+import components from './components';
+import libraries from './libraries';
 
 const routes = {
-    '/': new MainMenu(components),
-    '/about': new About(components),
-    '/famous-riddles': new FamousRiddles(components),
-    '/instructions': new Instructions(components),
-    '/riddles/:riddle': new Riddle(components)
+    '/': new controllers.MainMenu(components),
+    '/about': new controllers.About(components),
+    '/famous-riddles': new controllers.FamousRiddles(components),
+    '/instructions': new controllers.Instructions(components),
+    '/riddles/:riddle': new controllers.Riddle(components)
 };
 
 export function registerRoutes() {
