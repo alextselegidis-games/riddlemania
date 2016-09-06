@@ -3,4 +3,6 @@ node_modules
 npm-debug.log
 src/assets/*
 !src/assets/index.html
+!src/assets/fonts
+!src/assets/images
 src/config.php
