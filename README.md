@@ -1,7 +1,7 @@
-# Riddles4u
+# Riddles4U
 > Amazing riddles game platform with dynamic content loading. 
 
-Riddles4u is going to be an open source riddles gaming platform that will include dynamic content management, intuitive riddle gaming UI and other interesting features. 
+Riddles4U is going to be an open source riddles gaming platform that will include dynamic content management, intuitive riddle gaming UI and other interesting features. 
 
 The project is still on development, more info are coming soon. 
 
