@@ -20,8 +20,21 @@ class MainMenu {
     }
 
     display() {
+        const menuBox = new this.components.MenuBox();
+
+        menuBox
+            .addItem(new this.components.MenuItem('Play', '#/riddle/1'))
+            .addItem(new this.components.MenuItem('FamousRiddles', '#/famous-riddles'))
+            .addItem(new this.components.MenuItem('About', '#/about'));
+
+        const templateData = {
+            mainMenu: menuBox.getHtml(),
+            introTitle: 'Introduction',
+            introMessage: 'This is a sample introduction message.'
+        };
+
         const content = document.getElementById('content');
-        content.innerHTML = this.template();
+        content.innerHTML = this.template(templateData);
     }
 }
 

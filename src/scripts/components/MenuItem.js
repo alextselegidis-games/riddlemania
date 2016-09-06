@@ -8,3 +8,22 @@
  * @link        http://riddles4u.com
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
+
+class MenuItem {
+    constructor(title, url) {
+        this.title = title;
+        this.url = url;
+        this.template = require('../../templates/components/MenuItem.html');
+    }
+
+    getHtml() {
+        const templateData = {
+            title: this.title,
+            url: this.url
+        };
+
+        return this.template(templateData);
+    }
+}
+
+export default MenuItem;
