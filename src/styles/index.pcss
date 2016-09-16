@@ -14,6 +14,19 @@
 @import './variables.pcss';
 @import './grid.pcss';
 
+@import './components/MenuBox.pcss';
+@import './components/MenuItem.pcss';
+@import './components/AnswerBox.pcss';
+@import './components/ContentBox.pcss';
+@import './components/LanguageSwitch.pcss';
+@import './components/SocialShare.pcss';
+
+@import './controllers/MainMenu.pcss';
+@import './controllers/About.pcss';
+@import './controllers/FamousRiddles.pcss';
+@import './controllers/Instructions.pcss';
+@import './controllers/Riddle.pcss';
+
 html,
 body {
     width: 100%;
@@ -34,8 +47,11 @@ header {
     }
 }
 
-.content {
-
+#content {
+    a {
+        text-decoration: none;
+        color: color($brand-primary lightness(20%));
+    }
 }
 
 footer {
