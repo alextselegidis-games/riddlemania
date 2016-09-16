@@ -28,7 +28,7 @@ class MainMenu {
             .addItem(new this.components.MenuItem('About', '#/about'));
 
         const templateData = {
-            mainMenu: menuBox.getHtml(),
+            menuBox: menuBox.getHtml(),
             introTitle: 'Introduction',
             introMessage: 'This is a sample introduction message.'
         };

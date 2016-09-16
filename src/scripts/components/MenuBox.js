@@ -31,7 +31,6 @@ class MenuBox {
             menuItems: menuItemsHtml
         };
 
-        debugger;
         return this.template(templateData);
     }
 }
