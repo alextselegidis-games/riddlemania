@@ -11,7 +11,8 @@
 
 var development = process.env.NODE_ENV !== 'production';
 var webpack = require('webpack');
-var plugins = [];
+var notifier = require('webpack-notifier');
+var plugins = [ new notifier() ];
 var path = require('path');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
