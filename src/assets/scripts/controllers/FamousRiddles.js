@@ -9,21 +9,56 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+import marked from 'marked';
+import {getCurrentLanguage, translate} from '../libraries/Languages';
+
 class FamousRiddles {
-    constructor(components) {
-        this.components = components;
-    }
-
     register(page, route) {
-        page(route, this.load, this.display);
+        page(route, this.load.bind(this), this.display.bind(this));
     }
 
-    load() {
+    load(context, next) {
+        this
+            ._getFamousRiddles(getCurrentLanguage())
+            .then((response) => {
+                const famousRiddles = document.querySelector('.famous-riddles-content');
+                famousRiddles.innerHTML = marked(response);
+            })
+            .catch((request) => {
 
+            });
+
+        next();
     }
 
     display() {
+        document.body.className = 'famous-riddles';
+        const template = require('../../templates/controllers/FamousRiddles.html');
+        const content = document.querySelector('#content');
+        content.innerHTML = template({
+            back: translate('back', 'labels')
+        });
+    }
 
+    _getFamousRiddles(languageCode) {
+        return new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('GET', `storage/content/${languageCode}/famous-riddles.md`, true);
+
+            request.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                    resolve(this.response);
+                } else {
+                    reject(this.response);
+                }
+            };
+
+            request.onerror = function() {
+                reject(request);
+            };
+
+            request.send();
+        });
     }
 }
 
