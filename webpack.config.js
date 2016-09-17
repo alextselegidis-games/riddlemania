@@ -14,6 +14,7 @@ var webpack = require('webpack');
 var notifier = require('webpack-notifier');
 var plugins = [ new notifier() ];
 var path = require('path');
+var postcssImport = require('postcss-import');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 var color = require('postcss-color-function');
@@ -41,6 +42,6 @@ module.exports = {
     },
     plugins: plugins,
     postcss: function() {
-        return [precss, color, autoprefixer];
+        return [postcssImport, precss, color, autoprefixer];
     }
 };
