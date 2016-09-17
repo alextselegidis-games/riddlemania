@@ -10,14 +10,16 @@
  * ---------------------------------------------------------------------------- */
 
 import page from 'page';
-import controllers from './controllers';
+import MainMenu from '../controllers/MainMenu';
+import About from '../controllers/About';
+import FamousRiddles from '../controllers/FamousRiddles';
+import Riddle from '../controllers/Riddle';
 
 const routes = {
-    '/': new controllers.MainMenu(),
-    '/about': new controllers.About(),
-    '/famous-riddles': new controllers.FamousRiddles(),
-    '/instructions': new controllers.Instructions(),
-    '/riddles/:riddle': new controllers.Riddle()
+    '/': new MainMenu(),
+    '/about': new About(),
+    '/famous-riddles': new FamousRiddles(),
+    '/riddles/:riddle': new Riddle()
 };
 
 export function registerRoutes() {

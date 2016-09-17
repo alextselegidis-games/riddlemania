@@ -10,8 +10,8 @@
  * ---------------------------------------------------------------------------- */
 
 import '../styles/index.pcss';
-import {registerRoutes} from './routes';
-import {registerErrorHandler} from './errors';
+import {registerRoutes} from './libraries/Routes';
+import {registerErrorHandler} from './libraries/Environment';
 
 registerRoutes();
 registerErrorHandler();
