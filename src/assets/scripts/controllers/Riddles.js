@@ -9,13 +9,13 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-class Riddle {
+class Riddles {
     constructor(components) {
         this.components = components;
     }
 
     register(page, route) {
-        page(route, this.load, this.display);
+        page(route, this.load.bind(this), this.display.bind(this));
     }
 
     load(context, next) {

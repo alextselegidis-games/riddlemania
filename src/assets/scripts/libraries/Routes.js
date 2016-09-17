@@ -13,7 +13,7 @@ import page from 'page';
 import MainMenu from '../controllers/MainMenu';
 import About from '../controllers/About';
 import FamousRiddles from '../controllers/FamousRiddles';
-import Riddle from '../controllers/Riddle';
+import Riddles from '../controllers/Riddles';
 
 const routes = {
     '/': new MainMenu(),
