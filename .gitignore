@@ -1,8 +1,6 @@
 .idea
 node_modules
 npm-debug.log
-src/assets/*
-!src/assets/index.html
-!src/assets/fonts
-!src/assets/images
+src/bundle/*
+!src/bundle/index.html
 src/config.php

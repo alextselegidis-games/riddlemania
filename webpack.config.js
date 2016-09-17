@@ -29,9 +29,9 @@ if (!development) {
 module.exports = {
     devtool: development ? 'source-map' : '',
     context: path.resolve(__dirname, 'src'),
-    entry: './scripts/index.js',
+    entry: './assets/scripts/index.js',
     output: {
-        path: path.resolve(__dirname, 'src/assets'),
+        path: path.resolve(__dirname, 'src/bundle'),
         filename: 'scripts.js'
     },
     module: {
