@@ -12,7 +12,7 @@
 var development = process.env.NODE_ENV !== 'production';
 var webpack = require('webpack');
 var notifier = require('webpack-notifier');
-var plugins = [ new notifier() ];
+var plugins = [new notifier()];
 var path = require('path');
 var postcssImport = require('postcss-import');
 var precss = require('precss');
@@ -42,7 +42,15 @@ module.exports = {
         ]
     },
     plugins: plugins,
-    postcss: function() {
-        return [postcssImport, precss, calc, color, autoprefixer];
+    postcss: function(webpack) {
+        return [
+            postcssImport({
+                addDependencyTo: webpack
+            }),
+            precss,
+            calc,
+            color,
+            autoprefixer
+        ];
     }
 };
