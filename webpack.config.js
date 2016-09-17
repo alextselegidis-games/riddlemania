@@ -18,6 +18,7 @@ var postcssImport = require('postcss-import');
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 var color = require('postcss-color-function');
+var calc = require('postcss-calc');
 
 if (!development) {
     plugins.push(new webpack.optimize.DedupePlugin());
@@ -42,6 +43,6 @@ module.exports = {
     },
     plugins: plugins,
     postcss: function() {
-        return [postcssImport, precss, color, autoprefixer];
+        return [postcssImport, precss, calc, color, autoprefixer];
     }
 };
