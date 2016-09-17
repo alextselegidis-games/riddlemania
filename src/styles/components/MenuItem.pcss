@@ -10,8 +10,16 @@
  * ---------------------------------------------------------------------------- */
 
 .menu-item {
+    margin-bottom: $base-margin;
+
     a {
+        font-size: 28px;
+        font-weight: bold;
         text-decoration: none;
-        color: color($brand-primary lightness(10%));
+        color: $text-color;
+
+        &:hover {
+            color: color($brand-primary lightness(80%));
+        }
     }
 }
