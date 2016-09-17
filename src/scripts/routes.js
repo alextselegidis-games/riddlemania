@@ -11,15 +11,13 @@
 
 import page from 'page';
 import controllers from './controllers';
-import components from './components';
-import libraries from './libraries';
 
 const routes = {
-    '/': new controllers.MainMenu(components),
-    '/about': new controllers.About(components),
-    '/famous-riddles': new controllers.FamousRiddles(components),
-    '/instructions': new controllers.Instructions(components),
-    '/riddles/:riddle': new controllers.Riddle(components)
+    '/': new controllers.MainMenu(),
+    '/about': new controllers.About(),
+    '/famous-riddles': new controllers.FamousRiddles(),
+    '/instructions': new controllers.Instructions(),
+    '/riddles/:riddle': new controllers.Riddle()
 };
 
 export function registerRoutes() {

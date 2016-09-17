@@ -1,2 +1,2 @@
-# Deny direct access to directory.
-deny from all
+# Deny directory listings.
+Options -Indexes
