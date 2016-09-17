@@ -51,11 +51,11 @@
 	
 	__webpack_require__(/*! ../styles/index.pcss */ 1);
 	
-	var _routes = __webpack_require__(/*! ./routes */ 5);
+	var _Routes = __webpack_require__(/*! ./libraries/Routes */ 27);
 	
-	var _errors = __webpack_require__(/*! ./errors */ 26);
+	var _Environment = __webpack_require__(/*! ./libraries/Environment */ 28);
 	
-	(0, _routes.registerRoutes)(); /* ----------------------------------------------------------------------------
+	(0, _Routes.registerRoutes)(); /* ----------------------------------------------------------------------------
 	                                * Riddles4U - Amazing Riddles Game Platform
 	                                *
 	                                * @package     Riddles4U
@@ -66,7 +66,7 @@
 	                                * @since       v1.0.0
 	                                * ---------------------------------------------------------------------------- */
 	
-	(0, _errors.registerErrorHandler)();
+	(0, _Environment.registerErrorHandler)();
 
 /***/ },
 /* 1 */
@@ -429,58 +429,7 @@
 
 
 /***/ },
-/* 5 */
-/*!**********************************!*\
-  !*** ./assets/scripts/routes.js ***!
-  \**********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.registerRoutes = registerRoutes;
-	
-	var _page = __webpack_require__(/*! page */ 6);
-	
-	var _page2 = _interopRequireDefault(_page);
-	
-	var _controllers = __webpack_require__(/*! ./controllers */ 10);
-	
-	var _controllers2 = _interopRequireDefault(_controllers);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	/* ----------------------------------------------------------------------------
-	 * Riddles4U - Amazing Riddles Game Platform
-	 *
-	 * @package     Riddles4U
-	 * @author      Alex Tselegidis <alextselegidis@gmail.com>
-	 * @copyright   Copyright (c) 2016, BigBlackCode
-	 * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
-	 * @link        http://riddles4u.com
-	 * @since       v1.0.0
-	 * ---------------------------------------------------------------------------- */
-	
-	var routes = {
-	    '/': new _controllers2.default.MainMenu(),
-	    '/about': new _controllers2.default.About(),
-	    '/famous-riddles': new _controllers2.default.FamousRiddles(),
-	    '/instructions': new _controllers2.default.Instructions(),
-	    '/riddles/:riddle': new _controllers2.default.Riddle()
-	};
-	
-	function registerRoutes() {
-	    _page2.default.base(location.pathname);
-	
-	    for (var route in routes) {
-	        routes[route].register(_page2.default, route);
-	    }
-	    (0, _page2.default)();
-	}
-
-/***/ },
+/* 5 */,
 /* 6 */
 /*!**************************!*\
   !*** ../~/page/index.js ***!
@@ -1713,58 +1662,7 @@
 
 
 /***/ },
-/* 10 */
-/*!*********************************************!*\
-  !*** ./assets/scripts/controllers/index.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _About = __webpack_require__(/*! ./About */ 11);
-	
-	var _About2 = _interopRequireDefault(_About);
-	
-	var _FamousRiddles = __webpack_require__(/*! ./FamousRiddles */ 12);
-	
-	var _FamousRiddles2 = _interopRequireDefault(_FamousRiddles);
-	
-	var _Instructions = __webpack_require__(/*! ./Instructions */ 13);
-	
-	var _Instructions2 = _interopRequireDefault(_Instructions);
-	
-	var _MainMenu = __webpack_require__(/*! ./MainMenu */ 14);
-	
-	var _MainMenu2 = _interopRequireDefault(_MainMenu);
-	
-	var _Riddle = __webpack_require__(/*! ./Riddle */ 25);
-	
-	var _Riddle2 = _interopRequireDefault(_Riddle);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	  About: _About2.default,
-	  FamousRiddles: _FamousRiddles2.default,
-	  Instructions: _Instructions2.default,
-	  MainMenu: _MainMenu2.default,
-	  Riddle: _Riddle2.default
-	}; /* ----------------------------------------------------------------------------
-	    * Riddles4U - Amazing Riddles Game Platform
-	    *
-	    * @package     Riddles4U
-	    * @author      Alex Tselegidis <alextselegidis@gmail.com>
-	    * @copyright   Copyright (c) 2016, BigBlackCode
-	    * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
-	    * @link        http://riddles4u.com
-	    * @since       v1.0.0
-	    * ---------------------------------------------------------------------------- */
-
-/***/ },
+/* 10 */,
 /* 11 */
 /*!*********************************************!*\
   !*** ./assets/scripts/controllers/About.js ***!
@@ -1871,59 +1769,7 @@
 	exports.default = FamousRiddles;
 
 /***/ },
-/* 13 */
-/*!****************************************************!*\
-  !*** ./assets/scripts/controllers/Instructions.js ***!
-  \****************************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	/* ----------------------------------------------------------------------------
-	 * Riddles4U - Amazing Riddles Game Platform
-	 *
-	 * @package     Riddles4U
-	 * @author      Alex Tselegidis <alextselegidis@gmail.com>
-	 * @copyright   Copyright (c) 2016, BigBlackCode
-	 * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
-	 * @link        http://riddles4u.com
-	 * @since       v1.0.0
-	 * ---------------------------------------------------------------------------- */
-	
-	var Instructions = function () {
-	    function Instructions(components) {
-	        _classCallCheck(this, Instructions);
-	
-	        this.components = components;
-	    }
-	
-	    _createClass(Instructions, [{
-	        key: "register",
-	        value: function register(page, route) {
-	            page(route, this.load, this.display);
-	        }
-	    }, {
-	        key: "load",
-	        value: function load() {}
-	    }, {
-	        key: "display",
-	        value: function display() {}
-	    }]);
-	
-	    return Instructions;
-	}();
-	
-	exports.default = Instructions;
-
-/***/ },
+/* 13 */,
 /* 14 */
 /*!************************************************!*\
   !*** ./assets/scripts/controllers/MainMenu.js ***!
@@ -4410,10 +4256,72 @@
 	exports.default = Riddle;
 
 /***/ },
-/* 26 */
-/*!**********************************!*\
-  !*** ./assets/scripts/errors.js ***!
-  \**********************************/
+/* 26 */,
+/* 27 */
+/*!********************************************!*\
+  !*** ./assets/scripts/libraries/Routes.js ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.registerRoutes = registerRoutes;
+	
+	var _page = __webpack_require__(/*! page */ 6);
+	
+	var _page2 = _interopRequireDefault(_page);
+	
+	var _MainMenu = __webpack_require__(/*! ../controllers/MainMenu */ 14);
+	
+	var _MainMenu2 = _interopRequireDefault(_MainMenu);
+	
+	var _About = __webpack_require__(/*! ../controllers/About */ 11);
+	
+	var _About2 = _interopRequireDefault(_About);
+	
+	var _FamousRiddles = __webpack_require__(/*! ../controllers/FamousRiddles */ 12);
+	
+	var _FamousRiddles2 = _interopRequireDefault(_FamousRiddles);
+	
+	var _Riddle = __webpack_require__(/*! ../controllers/Riddle */ 25);
+	
+	var _Riddle2 = _interopRequireDefault(_Riddle);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var routes = {
+	    '/': new _MainMenu2.default(),
+	    '/about': new _About2.default(),
+	    '/famous-riddles': new _FamousRiddles2.default(),
+	    '/riddles/:riddle': new _Riddle2.default()
+	}; /* ----------------------------------------------------------------------------
+	    * Riddles4U - Amazing Riddles Game Platform
+	    *
+	    * @package     Riddles4U
+	    * @author      Alex Tselegidis <alextselegidis@gmail.com>
+	    * @copyright   Copyright (c) 2016, BigBlackCode
+	    * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
+	    * @link        http://riddles4u.com
+	    * @since       v1.0.0
+	    * ---------------------------------------------------------------------------- */
+	
+	function registerRoutes() {
+	    _page2.default.base(location.pathname);
+	
+	    for (var route in routes) {
+	        routes[route].register(_page2.default, route);
+	    }
+	    (0, _page2.default)();
+	}
+
+/***/ },
+/* 28 */
+/*!*************************************************!*\
+  !*** ./assets/scripts/libraries/Environment.js ***!
+  \*************************************************/
 /***/ function(module, exports) {
 
 	'use strict';
