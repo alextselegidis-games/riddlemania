@@ -26,6 +26,10 @@
 @import 'controllers/FamousRiddles.pcss';
 @import 'controllers/Riddle.pcss';
 
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     width: 100%;
@@ -48,6 +52,7 @@ body {
 header {
     .logo {
         width: 100%;
+        max-width: 150px;
     }
 }
 
@@ -56,6 +61,7 @@ header {
 }
 
 footer {
+    padding-top: $base-padding;
     font-size: 0.8rem;
     text-align: left;
 }
