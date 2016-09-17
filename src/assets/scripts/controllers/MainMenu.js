@@ -41,9 +41,9 @@ class MainMenu {
         const menuBox = new MenuBox();
 
         menuBox
-            .addItem(new MenuItem('Play', '#/riddle/1'))
-            .addItem(new MenuItem('FamousRiddles', '#/famous-riddles'))
-            .addItem(new MenuItem('About', '#/about'));
+            .addItem(new MenuItem('Play', '#!/riddle/1'))
+            .addItem(new MenuItem('FamousRiddles', '#!/famous-riddles'))
+            .addItem(new MenuItem('About', '#!/about'));
 
         const templateData = {
             menuBox: menuBox.getHtml(),

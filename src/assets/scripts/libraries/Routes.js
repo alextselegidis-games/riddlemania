@@ -23,10 +23,20 @@ const routes = {
 };
 
 export function registerRoutes() {
-    page.base(location.pathname);
+    let base = location.pathname;
+
+    if (base.includes('.html')) {
+        base = base.split('/');
+        base.pop();
+        base = base.join('/');
+    }
+
+    page.base(base);
 
     for (let route in routes) {
         routes[route].register(page, route);
     }
-    page();
+    page({
+        hashbang: true
+    });
 }
