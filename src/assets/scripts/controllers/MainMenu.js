@@ -12,7 +12,7 @@
 import marked from 'marked';
 import MenuBox from '../components/MenuBox';
 import MenuItem from '../components/MenuItem';
-import {getCurrentLanguage} from '../libraries/Language';
+import {getCurrentLanguage} from '../libraries/Languages';
 
 class MainMenu {
     constructor() {
@@ -38,6 +38,8 @@ class MainMenu {
     }
 
     display() {
+        document.body.className = 'main-menu';
+
         const menuBox = new MenuBox();
 
         menuBox
@@ -46,9 +48,7 @@ class MainMenu {
             .addItem(new MenuItem('About', '#!/about'));
 
         const templateData = {
-            menuBox: menuBox.getHtml(),
-            introTitle: 'Introduction',
-            introMessage: 'This is a sample introduction message.'
+            menuBox: menuBox.getHtml()
         };
 
         const content = document.getElementById('content');

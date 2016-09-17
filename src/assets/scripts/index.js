@@ -12,7 +12,11 @@
 import '../styles/index.pcss';
 import {registerRoutes} from './libraries/Routes';
 import {registerErrorHandler} from './libraries/Environment';
+import {loadSection} from './libraries/Languages';
 
-registerRoutes();
-registerErrorHandler();
+loadSection('labels')
+    .then(() => {
+        registerRoutes();
+        registerErrorHandler();
+    });
 

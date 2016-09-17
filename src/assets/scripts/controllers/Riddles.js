@@ -27,4 +27,4 @@ class Riddles {
     }
 }
 
-export default Riddle;
+export default Riddles;

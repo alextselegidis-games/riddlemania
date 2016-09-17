@@ -19,7 +19,7 @@ const routes = {
     '/': new MainMenu(),
     '/about': new About(),
     '/famous-riddles': new FamousRiddles(),
-    '/riddles/:riddle': new Riddle()
+    '/riddles/:riddle': new Riddles()
 };
 
 export function registerRoutes() {
