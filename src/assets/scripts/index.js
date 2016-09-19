@@ -12,7 +12,8 @@
 import '../styles/index.pcss';
 import {registerRoutes} from './libraries/Routes';
 import {registerErrorHandler} from './libraries/Environment';
-import {loadSection} from './libraries/Languages';
+import {loadSection, getAvailableLanguages, getCurrentLanguage} from './libraries/Languages';
+import LanguageSwitch from './components/LanguageSwitch';
 
 loadSection('labels')
     .then(() => {
@@ -20,3 +21,8 @@ loadSection('labels')
         registerErrorHandler();
     });
 
+const header = document.querySelector('header');
+const languageSwitch = new LanguageSwitch(getAvailableLanguages());
+languageSwitch
+    .setCurrentLanguage(getCurrentLanguage())
+    .appendTo(header);

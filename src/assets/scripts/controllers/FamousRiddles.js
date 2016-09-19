@@ -25,7 +25,7 @@ class FamousRiddles {
                 famousRiddles.innerHTML = marked(response);
             })
             .catch((request) => {
-
+                console.error('Get famous riddles error: ', request);
             });
 
         next();

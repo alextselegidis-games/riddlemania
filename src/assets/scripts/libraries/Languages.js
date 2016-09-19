@@ -31,7 +31,7 @@ export function getAvailableLanguages() {
 }
 
 export function loadSection(name) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         var request = new XMLHttpRequest();
         request.open('GET', `storage/translations/${getCurrentLanguage()}/${name}`, true);
 

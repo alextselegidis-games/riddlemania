@@ -8,3 +8,19 @@
  * @link        http://riddles4u.com
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
+
+.language-switch {
+    display: inline-block;
+    padding-left: 0;
+    list-style: none;
+    float: right;
+
+    li {
+        float: left;
+        margin-right: $base-margin;
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+}
