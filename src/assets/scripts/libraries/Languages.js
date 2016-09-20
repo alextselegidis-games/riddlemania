@@ -30,6 +30,20 @@ export function getAvailableLanguages() {
     return languages;
 }
 
+export function loadAllSections() {
+    const promises = [];
+    const sections = [
+        'labels',
+        'messages'
+    ];
+
+    for (let name of sections) {
+        promises.push(loadSection(name));
+    }
+
+    return Promise.all(promises);
+}
+
 export function loadSection(name) {
     return new Promise((resolve) => {
         var request = new XMLHttpRequest();

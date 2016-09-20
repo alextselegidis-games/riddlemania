@@ -12,17 +12,19 @@
 import '../styles/index.pcss';
 import {registerRoutes} from './libraries/Routes';
 import {registerErrorHandler} from './libraries/Environment';
-import {loadSection, getAvailableLanguages, getCurrentLanguage} from './libraries/Languages';
+import {loadAllSections, getAvailableLanguages, getCurrentLanguage} from './libraries/Languages';
 import LanguageSwitch from './components/LanguageSwitch';
+import NotificationBox from './components/NotificationBox';
 
-loadSection('labels')
+loadAllSections()
     .then(() => {
         registerRoutes();
         registerErrorHandler();
+        const header = document.querySelector('header');
+        const notificationBox = new NotificationBox();
+        notificationBox.appendTo(header);
+        const languageSwitch = new LanguageSwitch(getAvailableLanguages());
+        languageSwitch
+            .setCurrentLanguage(getCurrentLanguage())
+            .appendTo(header);
     });
-
-const header = document.querySelector('header');
-const languageSwitch = new LanguageSwitch(getAvailableLanguages());
-languageSwitch
-    .setCurrentLanguage(getCurrentLanguage())
-    .appendTo(header);

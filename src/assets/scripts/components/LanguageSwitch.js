@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import page from 'page';
-import {setCurrentLanguage, loadSection} from '../libraries/Languages';
+import {setCurrentLanguage, loadAllSections} from '../libraries/Languages';
 
 class LanguageSwitch {
     constructor(availableLanguages) {
@@ -60,7 +60,7 @@ class LanguageSwitch {
 
             setCurrentLanguage(event.target.getAttribute('data-language'));
 
-            loadSection('labels').then(() => {
+            loadAllSections().then(() => {
                 const route = location.hash.replace('#!', '');
                 page(route);
             });
