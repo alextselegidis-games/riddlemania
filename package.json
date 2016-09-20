@@ -4,7 +4,6 @@
   "description": "Amazing riddles game platform with dynamic content loading.",
   "main": "src/index.html",
   "dependencies": {
-    "axios": "^0.14.0",
     "marked": "^0.3.6",
     "normalize.css": "^4.2.0",
     "page": "^1.7.1",
