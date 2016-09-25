@@ -20,11 +20,17 @@ loadAllSections()
     .then(() => {
         registerRoutes();
         registerErrorHandler();
+
         const header = document.querySelector('header');
+
         const notificationBox = new NotificationBox();
         notificationBox.appendTo(header);
+
         const languageSwitch = new LanguageSwitch(getAvailableLanguages());
         languageSwitch
             .setCurrentLanguage(getCurrentLanguage())
             .appendTo(header);
+
+        notificationBox.bindToggleClickListener();
+        languageSwitch.bindLanguageClickListener();
     });

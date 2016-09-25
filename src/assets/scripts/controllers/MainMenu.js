@@ -13,12 +13,9 @@ import marked from 'marked';
 import MenuBox from '../components/MenuBox';
 import MenuItem from '../components/MenuItem';
 import {getCurrentLanguage} from '../libraries/Languages';
+import renderMainMenu from '../../templates/controllers/MainMenu.html';
 
 class MainMenu {
-    constructor() {
-        this.template = require('../../templates/controllers/MainMenu.html');
-    }
-
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
     }
@@ -52,7 +49,7 @@ class MainMenu {
         };
 
         const content = document.getElementById('content');
-        content.innerHTML = this.template(templateData);
+        content.innerHTML = renderMainMenu(templateData);
     }
 
     _getIntroduction(languageCode) {

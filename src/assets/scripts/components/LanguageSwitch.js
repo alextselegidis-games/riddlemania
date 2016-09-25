@@ -38,19 +38,16 @@ class LanguageSwitch {
             });
         }
 
-
         const template = require('../../templates/components/LanguageSwitch.html');
         const templateData = {
             languages
         };
         container.innerHTML += template(templateData);
 
-        this._bindLanguageClickListener();
-
         return this;
     }
 
-    _bindLanguageClickListener() {
+    bindLanguageClickListener() {
         document.querySelector('.language-switch').addEventListener('click', event => {
             event.preventDefault();
 

@@ -10,23 +10,25 @@
  * ---------------------------------------------------------------------------- */
 
 import {translate} from '../libraries/Languages';
+import renderNotificationBox from '../../templates/components/NotificationBox.html';
 
 class NotificationBox {
     appendTo(container) {
-        const template = require('../../templates/components/NotificationBox.html');
         const templateData = {
             notifications: translate('notifications', 'labels'),
             notificationsPlaceholder: translate('notificationsPlaceholder', 'messages')
         };
-        container.innerHTML += template(templateData);
+        container.innerHTML += renderNotificationBox(templateData);
 
-        this._bindClickEventListener();
+        return this;
     }
 
-    _bindClickEventListener() {
-        document.querySelector('.notification-box img').addEventListener('click', () => {
+    bindToggleClickListener() {
+        document.querySelector('.toggle').addEventListener('click', event => {
+            event.preventDefault();
+
             const notifications = document.querySelector('.notification-box > div');
-            debugger;
+
             if (notifications.style.display === 'none') {
                 notifications.style.display = 'block';
             } else {
