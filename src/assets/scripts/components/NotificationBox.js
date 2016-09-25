@@ -26,8 +26,9 @@ class NotificationBox {
     bindToggleClickListener() {
         document.querySelector('.toggle').addEventListener('click', event => {
             event.preventDefault();
+            event.stopPropagation();
 
-            const notifications = document.querySelector('.notification-box > div');
+            const notifications = document.querySelector('.notifications');
 
             if (notifications.style.display === 'none') {
                 notifications.style.display = 'block';
@@ -35,6 +36,16 @@ class NotificationBox {
                 notifications.style.display = 'none';
             }
         });
+
+        return this;
+    }
+
+    bindDocumentClickListener() {
+        document.addEventListener('click', () => {
+            document.querySelector('.notifications').style.display = 'none';
+        });
+
+        return this;
     }
 }
 

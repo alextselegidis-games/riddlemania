@@ -31,6 +31,8 @@ loadAllSections()
             .setCurrentLanguage(getCurrentLanguage())
             .appendTo(header);
 
-        notificationBox.bindToggleClickListener();
+        notificationBox
+            .bindToggleClickListener()
+            .bindDocumentClickListener();
         languageSwitch.bindLanguageClickListener();
     });
