@@ -11,19 +11,31 @@
 
 .notification-box {
     float: right;
-    padding: 10px 0;
+    padding: $base-padding 0;
 
     img {
         width: 20px;
         height: 20px;
     }
 
-    & > div {
+    .notifications {
         display: none;
+        position: absolute;
+        right: $base-padding;
+        text-align: right;
+        padding: $base-padding;
+        border-radius: 5px;
+        background: color(#FFF a(15%));
 
-        .list {
+        strong {
+            margin-bottom: $base-margin;
+        }
 
-            .notification {
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            li {
 
             }
         }
