@@ -11,6 +11,7 @@
 
 import marked from 'marked';
 import {getCurrentLanguage, translate} from '../libraries/Languages';
+import renderFamousRiddles from '../../templates/controllers/FamousRiddles.html';
 
 class FamousRiddles {
     register(page, route) {
@@ -33,9 +34,8 @@ class FamousRiddles {
 
     display() {
         document.body.className = 'famous-riddles';
-        const template = require('../../templates/controllers/FamousRiddles.html');
         const content = document.querySelector('#content');
-        content.innerHTML = template({
+        content.innerHTML = renderFamousRiddles({
             back: translate('back', 'labels')
         });
     }

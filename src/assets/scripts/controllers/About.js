@@ -11,6 +11,7 @@
 
 import marked from 'marked';
 import {getCurrentLanguage, translate} from '../libraries/Languages';
+import renderAbout from '../../templates/controllers/About.html';
 
 class About {
     register(page, route) {
@@ -33,9 +34,8 @@ class About {
 
     display() {
         document.body.className = 'about';
-        const template = require('../../templates/controllers/About.html');
         const content = document.querySelector('#content');
-        content.innerHTML = template({
+        content.innerHTML = renderAbout({
             back: translate('back', 'labels')
         });
     }
