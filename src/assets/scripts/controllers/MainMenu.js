@@ -12,7 +12,7 @@
 import marked from 'marked';
 import MenuBox from '../components/MenuBox';
 import MenuItem from '../components/MenuItem';
-import {getCurrentLanguage} from '../libraries/Languages';
+import {getCurrentLanguage, translate} from '../libraries/Languages';
 import renderMainMenu from '../../templates/controllers/MainMenu.html';
 
 class MainMenu {
@@ -40,9 +40,9 @@ class MainMenu {
         const menuBox = new MenuBox();
 
         menuBox
-            .addItem(new MenuItem('Play', '#!/riddles/1'))
-            .addItem(new MenuItem('FamousRiddles', '#!/famous-riddles'))
-            .addItem(new MenuItem('About', '#!/about'));
+            .addItem(new MenuItem(translate('play', 'labels'), '#!/riddles/1'))
+            .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
+            .addItem(new MenuItem(translate('about', 'labels'), '#!/about'));
 
         const templateData = {
             menuBox: menuBox.getHtml()
