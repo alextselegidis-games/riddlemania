@@ -15,6 +15,7 @@ export function addNotification(message) {
     const notification = document.createElement('li');
     notification.innerHTML = message;
     document.querySelector('.notifications ul').appendChild(notification);
+    return notification;
 }
 
 export function clearNotifications() {

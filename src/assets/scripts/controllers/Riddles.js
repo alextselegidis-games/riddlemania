@@ -9,21 +9,61 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-class Riddles {
-    constructor(components) {
-        this.components = components;
-    }
+import {translate} from '../libraries/Languages';
+import renderRiddles from '../../templates/controllers/Riddles.html';
+import AnswerBox from '../components/AnswerBox';
+import {addNotification, removeNotification, openNotifications} from '../libraries/Notifications';
 
+class Riddles {
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
+        page(route + '/:riddle-id', this.load.bind(this), this.display.bind(this));
     }
 
     load(context, next) {
-
+        this
+            ._getRiddle(context.params.riddleId)
+            .then(riddle => {
+                document.querySelector('.riddle-title').innerHTML(riddle.title);
+                document.querySelector('.riddle-content').innerHTML(riddle.content);
+                const answerBox = new AnswerBox(riddleId);
+                answerBox.appendTo(document.querySelector('.answer-box'));
+            })
+            .catch(exception => {
+                const notification = addNotification('Could not fetch riddle!');
+                openNotifications();
+                setTimeout(() => notification.remove(), 3000);
+                console.error('Could not fetch riddle:', exception);
+            });
     }
 
-    display(content, next) {
+    display(context, next) {
+        document.body.className = 'riddles';
+        const content = document.querySelector('#content');
+        content.innerHTML = renderRiddles({
+            back: translate('back', 'labels')
+        });
+    }
 
+    _getRiddle(riddleId) {
+        return new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('GET', `api.php/riddles/${riddleId}`, true);
+
+            request.onload = function() {
+                if (this.status >= 200 && this.status < 400) {
+                    resolve(this.response);
+                } else {
+                    reject(this.response);
+                }
+            };
+
+            request.onerror = function() {
+                reject(this.response);
+            };
+
+            request.send();
+        });
     }
 }
 
