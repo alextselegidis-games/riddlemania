@@ -17,16 +17,16 @@ import {addNotification, openNotifications} from '../libraries/Notifications';
 class Riddles {
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
-        page(route + '/:riddleId', this.load.bind(this), this.display.bind(this));
+        page(route + '/:hash', this.load.bind(this), this.display.bind(this));
     }
 
     load(context, next) {
         this
-            ._getRiddle(context.params.riddleId)
+            ._getRiddle(context.params.hash)
             .then(riddle => {
                 document.querySelector('.riddle-title').innerHTML(riddle.title);
                 document.querySelector('.riddle-content').innerHTML(riddle.content);
-                const answerBox = new AnswerBox(riddleId);
+                const answerBox = new AnswerBox(context.params.hash);
                 answerBox.appendTo(document.querySelector('.riddle-content'));
             })
             .catch(exception => {
@@ -47,10 +47,10 @@ class Riddles {
         });
     }
 
-    _getRiddle(riddleId) {
+    _getRiddle(hash) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
-            request.open('GET', `api.php/riddles/${riddleId}`, true);
+            request.open('GET', `api.php/riddles/${hash}`, true);
 
             request.onload = function() {
                 if (this.status >= 200 && this.status < 400) {
