@@ -27,7 +27,7 @@ class Riddles {
                 document.querySelector('.riddle-title').innerHTML(riddle.title);
                 document.querySelector('.riddle-content').innerHTML(riddle.content);
                 const answerBox = new AnswerBox(riddleId);
-                answerBox.appendTo(document.querySelector('.answer-box'));
+                answerBox.appendTo(document.querySelector('.riddle-content'));
             })
             .catch(exception => {
                 const notification = addNotification('Could not fetch riddle!');
