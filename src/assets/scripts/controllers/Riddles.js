@@ -12,12 +12,12 @@
 import {translate} from '../libraries/Languages';
 import renderRiddles from '../../templates/controllers/Riddles.html';
 import AnswerBox from '../components/AnswerBox';
-import {addNotification, removeNotification, openNotifications} from '../libraries/Notifications';
+import {addNotification, openNotifications} from '../libraries/Notifications';
 
 class Riddles {
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
-        page(route + '/:riddle-id', this.load.bind(this), this.display.bind(this));
+        page(route + '/:riddleId', this.load.bind(this), this.display.bind(this));
     }
 
     load(context, next) {
@@ -35,9 +35,11 @@ class Riddles {
                 setTimeout(() => notification.remove(), 3000);
                 console.error('Could not fetch riddle:', exception);
             });
+
+        next();
     }
 
-    display(context, next) {
+    display() {
         document.body.className = 'riddles';
         const content = document.querySelector('#content');
         content.innerHTML = renderRiddles({
