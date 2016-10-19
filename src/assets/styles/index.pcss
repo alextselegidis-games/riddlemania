@@ -60,7 +60,8 @@ header {
 }
 
 #content {
-
+    overflow: auto;
+    padding: $padding-base;
 }
 
 footer {
@@ -76,4 +77,21 @@ footer, .push {
 a {
     text-decoration: none !important;
     transition: color 0.2s linear;
+}
+
+.btn {
+    background: none;
+    border: 1px solid $text-color;
+    border-radius: $border-radius-base;
+    padding: calc($padding-base /2) $padding-base;
+    color: $text-color;
+
+    &:hover {
+
+    }
+}
+
+input {
+    padding: calc($padding-base /2) $padding-base;
+    color: color($text-color blackness(85%));
 }
