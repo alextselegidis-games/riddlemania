@@ -11,6 +11,7 @@
 
 import renderAnswerBox from '../../templates/components/AnswerBox.html';
 import {addNotification, openNotifications} from '../libraries/Notifications';
+import {translate} from '../libraries/Languages';
 
 class AnswerBox {
     constructor(hash) {
@@ -18,9 +19,12 @@ class AnswerBox {
     }
 
     appendTo(container) {
-        const answerBox = document.createElement();
-        answerBox.innerHTML = renderAnswerBox();
-        answerBox.addEventListener('click', this._onAnswerClickListener);
+        const answerBox = document.createElement('div');
+        answerBox.innerHTML = renderAnswerBox({
+            answerPlaceholder: translate('answerPlaceholder', 'messages'),
+            answer: translate('answer', 'labels')
+        });
+        answerBox.querySelector('.btn').addEventListener('click', this._onAnswerClickListener);
         container.appendChild(answerBox);
         return this;
     }

@@ -54,7 +54,7 @@ class FamousRiddles {
             };
 
             request.onerror = function() {
-                reject(request);
+                reject(this.response);
             };
 
             request.send();

@@ -24,10 +24,10 @@ class Riddles {
         this
             ._getRiddle(context.params.hash)
             .then(riddle => {
-                document.querySelector('.riddle-title').innerHTML(riddle.title);
-                document.querySelector('.riddle-content').innerHTML(riddle.content);
+                document.querySelector('.riddle-title').innerHTML = riddle.title;
+                document.querySelector('.riddle-content').innerHTML = riddle.content;
                 const answerBox = new AnswerBox(context.params.hash);
-                answerBox.appendTo(document.querySelector('.riddle-content'));
+                answerBox.appendTo(document.querySelector('.answer-box'));
             })
             .catch(exception => {
                 addNotification('Could not fetch riddle!');
@@ -57,7 +57,7 @@ class Riddles {
 
             request.onload = function() {
                 if (this.status >= 200 && this.status < 400) {
-                    resolve(this.response);
+                    resolve(JSON.parse(this.response));
                 } else {
                     reject(this.response);
                 }

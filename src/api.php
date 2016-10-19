@@ -25,3 +25,9 @@ require_once 'config.php';
  * - Redirect To Ad URL
  */
 
+// Dummy response for riddles page.
+header('Content-Type: application/json');
+echo json_encode([
+     'title' => 'Test Riddle #01',
+    'content' => 'This is the riddle content which will normally contain the riddle question.'
+]);
