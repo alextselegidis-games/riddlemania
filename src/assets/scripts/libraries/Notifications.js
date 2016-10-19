@@ -9,6 +9,8 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+import {translate} from './Languages';
+
 // @todo Add animation effect to the notification open/close.
 
 export function addNotification(message) {
@@ -23,9 +25,24 @@ export function clearNotifications() {
 }
 
 export function openNotifications() {
-    document.querySelector('.notifications').style.display = 'none';
+    const list = document.querySelector('.notifications ul');
+
+    if (list.querySelectorAll('li').length === 0) {
+        const placeholder = document.createElement('li');
+        placeholder.textContent = translate('notificationsPlaceholder', 'messages');
+        placeholder.className = 'placeholder';
+        list.appendChild(placeholder);
+    }
+
+    document.querySelector('.notifications').style.display = 'block';
 }
 
 export function closeNotifications() {
     document.querySelector('.notifications').style.display = 'none';
+
+    const list = document.querySelector('.notifications ul');
+
+    if (list.querySelector('.placeholder')) {
+        list.querySelector('.placeholder').remove();
+    }
 }

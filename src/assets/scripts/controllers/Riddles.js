@@ -32,7 +32,7 @@ class Riddles {
             .catch(exception => {
                 const notification = addNotification('Could not fetch riddle!');
                 openNotifications();
-                setTimeout(() => notification.remove(), 3000);
+                setTimeout(() => notification.remove(), 4000);
                 console.error('Could not fetch riddle:', exception);
             });
 
