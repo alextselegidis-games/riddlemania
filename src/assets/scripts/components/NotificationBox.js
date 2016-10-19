@@ -10,13 +10,13 @@
  * ---------------------------------------------------------------------------- */
 
 import {translate} from '../libraries/Languages';
+import {openNotifications, closeNotifications} from '../libraries/Notifications';
 import renderNotificationBox from '../../templates/components/NotificationBox.html';
 
 class NotificationBox {
     appendTo(container) {
         const templateData = {
-            notifications: translate('notifications', 'labels'),
-            notificationsPlaceholder: translate('notificationsPlaceholder', 'messages')
+            notifications: translate('notifications', 'labels')
         };
         container.innerHTML += renderNotificationBox(templateData);
 
@@ -31,9 +31,9 @@ class NotificationBox {
             const notifications = document.querySelector('.notifications');
 
             if (notifications.style.display === 'none') {
-                notifications.style.display = 'block';
+                openNotifications();
             } else {
-                notifications.style.display = 'none';
+                closeNotifications();
             }
         });
 
@@ -42,7 +42,7 @@ class NotificationBox {
 
     bindDocumentClickListener() {
         document.addEventListener('click', () => {
-            document.querySelector('.notifications').style.display = 'none';
+            closeNotifications();
         });
 
         return this;

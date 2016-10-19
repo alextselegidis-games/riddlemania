@@ -25,6 +25,8 @@ export function clearNotifications() {
 }
 
 export function openNotifications() {
+    document.querySelector('.notification-box').classList.add('open');
+
     const list = document.querySelector('.notifications ul');
 
     if (list.querySelectorAll('li').length === 0) {
@@ -38,6 +40,8 @@ export function openNotifications() {
 }
 
 export function closeNotifications() {
+    document.querySelector('.notification-box').classList.remove('open');
+
     document.querySelector('.notifications').style.display = 'none';
 
     const list = document.querySelector('.notifications ul');
