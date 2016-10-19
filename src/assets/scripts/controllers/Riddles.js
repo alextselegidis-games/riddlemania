@@ -12,7 +12,7 @@
 import {translate} from '../libraries/Languages';
 import renderRiddles from '../../templates/controllers/Riddles.html';
 import AnswerBox from '../components/AnswerBox';
-import {addNotification, openNotifications} from '../libraries/Notifications';
+import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
 
 class Riddles {
     register(page, route) {
@@ -30,9 +30,12 @@ class Riddles {
                 answerBox.appendTo(document.querySelector('.riddle-content'));
             })
             .catch(exception => {
-                const notification = addNotification('Could not fetch riddle!');
+                addNotification('Could not fetch riddle!');
                 openNotifications();
-                setTimeout(() => notification.remove(), 4000);
+                setTimeout(() => {
+                    closeNotifications();
+                    clearNotifications();
+                }, 3000);
                 console.error('Could not fetch riddle:', exception);
             });
 
