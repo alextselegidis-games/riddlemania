@@ -38,8 +38,13 @@ class AnswerBox {
             ._postAnswer(answer)
             .then(response => {
                 if (response.success) {
-                    // @todo Display success notifications.
-                    page(`riddles/${response.nextRiddleHash}`);
+                    addNotification('The provided answer is not valid.');
+                    openNotifications();
+                    setTimeout(() => {
+                        page(`riddles/${response.nextRiddleHash}`);
+                        closeNotifications();
+                        clearNotifications();
+                    }, 2000);
                 } else {
                     addNotification('The provided answer is not valid.');
                     openNotifications();
