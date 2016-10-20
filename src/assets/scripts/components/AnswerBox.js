@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import renderAnswerBox from '../../templates/components/AnswerBox.html';
-import {addNotification, openNotifications} from '../libraries/Notifications';
+import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
 import {translate} from '../libraries/Languages';
 
 class AnswerBox {
@@ -24,7 +24,7 @@ class AnswerBox {
             answerPlaceholder: translate('answerPlaceholder', 'messages'),
             answer: translate('answer', 'labels')
         });
-        answerBox.querySelector('.btn').addEventListener('click', this._onAnswerClickListener);
+        answerBox.querySelector('.btn').addEventListener('click', () => this._onAnswerClickListener());
         container.appendChild(answerBox);
         return this;
     }
@@ -38,17 +38,24 @@ class AnswerBox {
             ._postAnswer(answer)
             .then(response => {
                 if (response.success) {
+                    // @todo Display success notifications.
                     page(`riddles/${response.nextRiddleHash}`);
                 } else {
-                    const notification = addNotification('The provided answer is not valid.');
+                    addNotification('The provided answer is not valid.');
                     openNotifications();
-                    setTimeout(() => notification.remove(), 3000);
+                    setTimeout(() => {
+                        closeNotifications();
+                        clearNotifications();
+                    }, 3000);
                 }
             })
             .catch(exception => {
-                const notification = addNotification('Could not post answer!');
+                addNotification('Could not post answer!');
                 openNotifications();
-                setTimeout(() => notification.remove(), 3000);
+                setTimeout(() => {
+                    closeNotifications();
+                    clearNotifications();
+                }, 3000);
                 console.error('Could not post answer:', exception);
             });
     }
@@ -56,8 +63,8 @@ class AnswerBox {
     _postAnswer(answer) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
-            request.open('POST', `api.php/riddles/${this.hash}/validate`);
-            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            request.open('POST', `api.php/riddles/${this.hash}/validate`, true);
+            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
             request.onload = function() {
                 if (this.status >= 200 && this.status < 400) {
@@ -71,7 +78,7 @@ class AnswerBox {
                 reject(this.response);
             };
 
-            request.send({answer});
+            request.send(JSON.stringify({answer}));
         });
     }
 }
