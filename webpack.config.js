@@ -38,7 +38,9 @@ module.exports = {
         loaders: [
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
             {test: /\.pcss$/, loader: 'style!css!postcss'},
-            {test: /\.html/, loader: 'mustache'}
+            {test: /\.html$/, loader: 'mustache'},
+            {test: /\.(woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+                loader: 'url?limit=100000&name=assets/asset-[hash].[ext]'}
         ]
     },
     plugins: plugins,
