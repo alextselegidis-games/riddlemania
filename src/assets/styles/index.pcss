@@ -11,16 +11,14 @@
 
 @import 'https://fonts.googleapis.com/css?family=Advent+Pro';
 @import '../../../node_modules/normalize.css/normalize.css';
-@import '../../../node_modules/skeleton-css-grid/skeleton-css-grid.css';
 @import 'variables.pcss';
-
+@import 'grid.pcss';
 @import 'components/MenuBox.pcss';
 @import 'components/MenuItem.pcss';
 @import 'components/AnswerBox.pcss';
 @import 'components/LanguageSwitch.pcss';
 @import 'components/NotificationBox.pcss';
 @import 'components/SocialShare.pcss';
-
 @import 'controllers/MainMenu.pcss';
 @import 'controllers/About.pcss';
 @import 'controllers/FamousRiddles.pcss';
@@ -42,24 +40,31 @@ body {
 }
 
 body {
-    padding: $padding-base;
+    padding: $padding-large;
     box-sizing: border-box;
     background: $brand-primary;
     color: $text-color;
     font-family: $font-family;
     font-size: $font-size-base;
+    line-height: 1.5;
 }
 
 header {
-    padding: $padding-base;
+    .columns {
+        margin-bottom: calc($margin-large * 2);
+    }
 
     .logo {
-        width: 100%;
-        max-width: 150px;
+        img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
+        }
     }
 }
 
-#content {
+main {
     overflow: auto;
     padding: $padding-base;
 }
@@ -75,15 +80,20 @@ footer, .push {
 }
 
 a {
+    color: $link-color;
     text-decoration: none !important;
     transition: color 0.2s linear;
+
+    &:hover {
+        color: color($brand-primary lightness(80%));
+    }
 }
 
 .btn {
     background: none;
     border: 1px solid $text-color;
     border-radius: $border-radius-base;
-    padding: calc($padding-base /2) $padding-base;
+    padding: calc($padding-base / 2) $padding-base;
     color: $text-color;
 
     &:hover {
@@ -92,6 +102,6 @@ a {
 }
 
 input {
-    padding: calc($padding-base /2) $padding-base;
+    padding: calc($padding-base / 2) $padding-base;
     color: color($text-color blackness(85%));
 }

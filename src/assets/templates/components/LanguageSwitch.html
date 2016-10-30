@@ -1,9 +1,11 @@
-<ul class="language-switch">
-    {{#languages}}
-        <li {{#default}}class="active"{{/default}}>
-            <a href="#{{code}}" data-language="{{code}}">
-                {{name}}
-            </a>
-        </li>
-    {{/languages}}
-</ul>
+<div class="language-switch">
+    <ul>
+        {{#languages}}
+            <li {{#default}}class="active"{{/default}}>
+                <a href="#{{code}}" data-language="{{code}}">
+                    {{name}}
+                </a>
+            </li>
+        {{/languages}}
+    </ul>
+</div>

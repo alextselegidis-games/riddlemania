@@ -10,18 +10,21 @@
  * ---------------------------------------------------------------------------- */
 
 .language-switch {
-    display: inline-block;
-    padding: 10px 0;
-    margin: 0;
-    list-style: none;
-    float: right;
+    float: left;
 
-    li {
-        float: left;
-        margin-right: $margin-base;
+    ul {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        list-style: none;
 
-        &.active {
-            font-weight: bold;
+        li {
+            float: left;
+            margin-right: $margin-base;
+
+            &.active {
+                font-weight: bold;
+            }
         }
     }
 }

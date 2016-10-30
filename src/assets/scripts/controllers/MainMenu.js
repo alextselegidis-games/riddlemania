@@ -48,7 +48,7 @@ class MainMenu {
             menuBox: menuBox.getHtml()
         };
 
-        const content = document.getElementById('content');
+        const content = document.querySelector('main .row');
         content.innerHTML = renderMainMenu(templateData);
     }
 

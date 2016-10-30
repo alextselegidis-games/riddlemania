@@ -18,7 +18,10 @@ class NotificationBox {
         const templateData = {
             notifications: translate('notifications', 'labels')
         };
-        container.innerHTML += renderNotificationBox(templateData);
+
+        const tmp = document.createElement('div');
+        tmp.innerHTML = renderNotificationBox(templateData);
+        container.appendChild(tmp.firstChild);
 
         return this;
     }

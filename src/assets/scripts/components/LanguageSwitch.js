@@ -11,6 +11,7 @@
 
 import page from 'page';
 import {setCurrentLanguage, loadAllSections} from '../libraries/Languages';
+import renderLanguageSwitch from '../../templates/components/LanguageSwitch.html';
 
 class LanguageSwitch {
     constructor(availableLanguages) {
@@ -38,11 +39,13 @@ class LanguageSwitch {
             });
         }
 
-        const template = require('../../templates/components/LanguageSwitch.html');
         const templateData = {
             languages
         };
-        container.innerHTML += template(templateData);
+
+        const tmp = document.createElement('div');
+        tmp.innerHTML = renderLanguageSwitch(templateData);
+        container.appendChild(tmp.firstChild);
 
         return this;
     }
@@ -65,6 +68,8 @@ class LanguageSwitch {
             document.querySelector('.language-switch .active').classList.remove('active');
             event.target.parentNode.classList.add('active');
         });
+
+        return this;
     }
 }
 

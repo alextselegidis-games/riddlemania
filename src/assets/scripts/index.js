@@ -21,18 +21,17 @@ loadAllSections()
         registerRoutes();
         registerErrorHandler();
 
-        const header = document.querySelector('header');
-
-        const notificationBox = new NotificationBox();
-        notificationBox.appendTo(header);
+        const tools = document.querySelector('header .tools');
 
         const languageSwitch = new LanguageSwitch(getAvailableLanguages());
         languageSwitch
             .setCurrentLanguage(getCurrentLanguage())
-            .appendTo(header);
+            .appendTo(tools)
+            .bindLanguageClickListener();
 
+        const notificationBox = new NotificationBox();
         notificationBox
+            .appendTo(tools)
             .bindToggleClickListener()
             .bindDocumentClickListener();
-        languageSwitch.bindLanguageClickListener();
     });
