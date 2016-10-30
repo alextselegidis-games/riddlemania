@@ -1,2 +1,2 @@
-### Introduction 
+## Introduction 
 Riddles4U is an online browser game with original riddles created by BigBlackCode. You can start solving our riddles by providing one-word answers while difficulty advances progressively. Make sure that you check out the **Famous Riddles** section and find some of the most well-known riddles along with background information about their creation. Read more information about the project in the **About** section.
