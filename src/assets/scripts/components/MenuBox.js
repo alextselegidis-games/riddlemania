@@ -9,10 +9,11 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+import renderMenuBox from '../../templates/components/MenuBox.html';
+
 class MenuBox {
     constructor() {
         this.menuItems = [];
-        this.template = require('../../templates/components/MenuBox.html')
     }
 
     addItem(menuItem) {
@@ -31,7 +32,7 @@ class MenuBox {
             menuItems: menuItemsHtml
         };
 
-        return this.template(templateData);
+        return renderMenuBox(templateData);
     }
 }
 
