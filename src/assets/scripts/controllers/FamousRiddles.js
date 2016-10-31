@@ -34,7 +34,7 @@ class FamousRiddles {
 
     display() {
         document.body.className = 'famous-riddles';
-        const content = document.querySelector('#content');
+        const content = document.querySelector('main .row');
         content.innerHTML = renderFamousRiddles({
             back: translate('back', 'labels')
         });

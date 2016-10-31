@@ -34,7 +34,7 @@ class About {
 
     display() {
         document.body.className = 'about';
-        const content = document.querySelector('#content');
+        const content = document.querySelector('main .row');
         content.innerHTML = renderAbout({
             back: translate('back', 'labels')
         });

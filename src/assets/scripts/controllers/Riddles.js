@@ -44,7 +44,7 @@ class Riddles {
 
     display() {
         document.body.className = 'riddles';
-        const content = document.querySelector('#content');
+        const content = document.querySelector('main .row');
         content.innerHTML = renderRiddles({
             back: translate('back', 'labels')
         });
