@@ -67,11 +67,15 @@ header {
 main {
     overflow: auto;
     padding: $padding-base;
+
+    > .row {
+        margin-bottom: $margin-large;
+    }
 }
 
 footer {
     padding: $padding-base;
-    font-size: 1rem;
+    font-size: .9rem;
     text-align: left;
 }
 
@@ -108,6 +112,10 @@ input {
 
 .link {
     margin-bottom: $margin-base;
+    transition: opacity .3s linear;
+    &:hover {
+        opacity: .5;
+    }
 
     img {
         width: 10px;
