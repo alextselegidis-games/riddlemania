@@ -93,18 +93,6 @@ a {
     }
 }
 
-.btn {
-    background: none;
-    border: 1px solid $text-color;
-    border-radius: $border-radius-base;
-    padding: calc($padding-base / 2) $padding-base;
-    color: $text-color;
-
-    &:hover {
-
-    }
-}
-
 input {
     padding: calc($padding-base / 2) $padding-base;
     color: color($text-color blackness(85%));
@@ -112,7 +100,14 @@ input {
 
 .link {
     margin-bottom: $margin-base;
+    padding: 0;
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 28px;
     transition: opacity .3s linear;
+    cursor: pointer;
+
     &:hover {
         opacity: .5;
     }
@@ -126,8 +121,6 @@ input {
     }
 
     a {
-        color: $text-color;
-        font-size: 28px;
     }
 }
 
