@@ -130,3 +130,21 @@ input {
         font-size: 28px;
     }
 }
+
+@media(min-width: $breakpoint-sm) {
+    header {
+        .logo {
+            img {
+                float: left;
+            }
+        }
+
+        .tools {
+            & > div {
+                float: left;
+                text-align: right;
+                display: inline-block;
+            }
+        }
+    }
+}

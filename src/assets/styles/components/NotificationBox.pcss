@@ -21,9 +21,10 @@
         position: absolute;
         right: 0;
         padding: $padding-base;
-        border-radius: 5px;
+        border-radius: 3px;
         background: color(#FFF a(15%));
         text-align: right;
+        margin-top: $margin-base;
 
         strong {
             margin-bottom: $margin-base;
@@ -45,6 +46,16 @@
                 transition: transform 0.3s linear;
                 transform: scale(1.2, 1.2);
             }
+        }
+    }
+}
+
+@media(min-width: $breakpoint-sm) {
+    .notification-box {
+        width: 10%;
+
+        img {
+            margin-top: calc($margin-base / 2);
         }
     }
 }
