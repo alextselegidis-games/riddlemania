@@ -99,23 +99,20 @@ input {
     color: color($text-color blackness(85%));
 }
 
-.link {
+.btn {
+    display: inline-block;
     margin-bottom: $margin-base;
     padding: 0;
     background: none;
     border: none;
     color: $text-color;
     font-size: 28px;
-    transition: opacity .2s linear;
     cursor: pointer;
     outline: none;
+    transition: opacity 0.2s linear;
 
     &:hover {
         opacity: .5;
-
-        a {
-            opacity: 1;
-        }
     }
 
     img {
@@ -159,7 +156,7 @@ input {
         }
     }
 
-    .link {
+    .btn {
         margin-bottom: $margin-large;
         font-size: 36px;
 

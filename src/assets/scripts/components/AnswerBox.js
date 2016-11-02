@@ -24,7 +24,7 @@ class AnswerBox {
             answerPlaceholder: translate('answerPlaceholder', 'messages'),
             answer: translate('answer', 'labels')
         });
-        answerBox.querySelector('.link.answer').addEventListener('click', () => this._onAnswerClickListener());
+        answerBox.querySelector('.btn.answer').addEventListener('click', () => this._onAnswerClickListener());
         container.appendChild(answerBox);
         return this;
     }
