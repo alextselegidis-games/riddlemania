@@ -125,6 +125,21 @@ input {
     }
 }
 
+.input-group {
+    input {
+        min-width: 230px;
+        padding: $padding-base calc($padding-base / 2);
+        background: none;
+        color: $text-color;
+        border-bottom: 2px dashed $text-color;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        font-style: italic;
+        outline: none;
+    }
+}
+
 @media(min-width: $breakpoint-sm) {
     header {
         .logo {
