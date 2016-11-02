@@ -38,19 +38,23 @@ class AnswerBox {
             ._postAnswer(answer)
             .then(response => {
                 if (response.success) {
+                    document.body.classList.add('success');
                     addNotification('The provided answer is not valid.');
                     openNotifications();
                     setTimeout(() => {
                         page(`riddles/${response.nextRiddleHash}`);
                         closeNotifications();
                         clearNotifications();
+                        document.body.classList.remove('success');
                     }, 2000);
                 } else {
+                    document.body.classList.add('failure');
                     addNotification('The provided answer is not valid.');
                     openNotifications();
                     setTimeout(() => {
                         closeNotifications();
                         clearNotifications();
+                        document.body.classList.remove('failure');
                     }, 3000);
                 }
             })
