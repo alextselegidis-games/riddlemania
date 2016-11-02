@@ -19,24 +19,37 @@
 
     .notifications {
         position: absolute;
-        right: 0;
-        padding: $padding-base;
+        right: -13px;
+        padding: calc($padding-base * 1.5);
         border-radius: $border-radius-base;
-        background: color(#FFF a(15%));
+        background: color(#FFF a(70%));
         text-align: right;
         margin-top: $margin-base;
+        max-width: 300px;
+        color: #555;
 
         strong {
             margin-bottom: $margin-base;
+            display: inline-block;
         }
 
         ul {
             list-style: none;
             padding-left: 0;
+            margin: 0;
+            font-size: 1.1rem;
+        }
 
-            li {
-
-            }
+        &:after {
+            border: 10px solid transparent;
+            border-bottom-color: color(#FFF a(70%));
+            content: '';
+            display: block;
+            height: 0;
+            right: 13px;
+            position: absolute;
+            top: -19px;
+            width: 0;
         }
     }
 
