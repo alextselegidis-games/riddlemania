@@ -22,7 +22,7 @@
 @import 'controllers/MainMenu.pcss';
 @import 'controllers/About.pcss';
 @import 'controllers/FamousRiddles.pcss';
-@import 'controllers/Riddle.pcss';
+@import 'controllers/Riddles.pcss';
 
 * {
     box-sizing: border-box;
@@ -86,10 +86,10 @@ footer, .push {
 a {
     color: $text-color;
     text-decoration: none !important;
-    transition: color 0.2s linear;
+    transition: opacity 0.2s linear;
 
     &:hover {
-        color: color($brand-primary lightness(80%));
+        opacity: .5;
     }
 }
 
@@ -105,11 +105,15 @@ input {
     border: none;
     color: $text-color;
     font-size: 28px;
-    transition: opacity .3s linear;
+    transition: opacity .2s linear;
     cursor: pointer;
 
     &:hover {
         opacity: .5;
+
+        a {
+            opacity: 1;
+        }
     }
 
     img {
@@ -118,9 +122,6 @@ input {
         float: left;
         margin-top: 16px;
         margin-right: $margin-base;
-    }
-
-    a {
     }
 }
 
