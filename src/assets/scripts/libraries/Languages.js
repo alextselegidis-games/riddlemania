@@ -48,7 +48,7 @@ export function loadAllSections() {
 export function loadSection(name) {
     return new Promise((resolve) => {
         var request = new XMLHttpRequest();
-        request.open('GET', `storage/translations/${getCurrentLanguage()}/${name}`, true);
+        request.open('GET', `storage/translations/${getCurrentLanguage()}/${name}.json`, true);
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
