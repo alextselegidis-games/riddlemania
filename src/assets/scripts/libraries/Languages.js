@@ -16,7 +16,7 @@ const languages = {
 
 const sections = {};
 
-let currentLanguage = 'en';
+let currentLanguage = localStorage.getItem('r4u-language') || 'en';
 
 export function getCurrentLanguage() {
     return currentLanguage;
@@ -24,6 +24,7 @@ export function getCurrentLanguage() {
 
 export function setCurrentLanguage(languageCode) {
     currentLanguage = languageCode;
+    localStorage.setItem('r4u-language', languageCode);
 }
 
 export function getAvailableLanguages() {

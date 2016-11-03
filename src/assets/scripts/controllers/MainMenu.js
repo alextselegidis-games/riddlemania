@@ -38,9 +38,10 @@ class MainMenu {
         document.body.className = 'main-menu';
 
         const menuBox = new MenuBox();
+        const nextRiddleHash = localStorage.getItem('r4u-riddle') || '28101d71d773c2d94ee80cb0d48a7477';
 
         menuBox
-            .addItem(new MenuItem(translate('play', 'labels'), '#!/riddles/1'))
+            .addItem(new MenuItem(translate('play', 'labels'), `#!/riddles/${nextRiddleHash}`))
             .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
             .addItem(new MenuItem(translate('about', 'labels'), '#!/about'));
 

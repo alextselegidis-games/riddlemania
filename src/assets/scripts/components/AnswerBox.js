@@ -41,6 +41,7 @@ class AnswerBox {
                     document.body.classList.add('success');
                     addNotification('The provided answer is not valid.');
                     openNotifications();
+                    localStorage.setItem('r4u-riddle', response.nextRiddleHash);
                     setTimeout(() => {
                         page(`riddles/${response.nextRiddleHash}`);
                         closeNotifications();
