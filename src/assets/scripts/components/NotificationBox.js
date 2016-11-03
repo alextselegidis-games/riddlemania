@@ -13,7 +13,20 @@ import {translate} from '../libraries/Languages';
 import {openNotifications, closeNotifications} from '../libraries/Notifications';
 import renderNotificationBox from '../../templates/components/NotificationBox.html';
 
+/**
+ * Notification Box Component
+ *
+ * This component displays an icon with notification display functionality. The notification content can be
+ * handled with the Notifications library.
+ */
 class NotificationBox {
+    /**
+     * Append to container.
+     *
+     * @param {HTMLElement} container The container element to be appended to.
+     *
+     * @return {NotificationBox} Class instance for chained method calls.
+     */
     appendTo(container) {
         const templateData = {
             notifications: translate('notifications', 'labels')
@@ -26,6 +39,11 @@ class NotificationBox {
         return this;
     }
 
+    /**
+     * Bind toggle click listener.
+     *
+     * @return {NotificationBox} Class instance for chained method calls.
+     */
     bindToggleClickListener() {
         document.querySelector('.toggle').addEventListener('click', event => {
             event.preventDefault();
@@ -43,6 +61,11 @@ class NotificationBox {
         return this;
     }
 
+    /**
+     * Bind document click listener.
+     *
+     * @return {NotificationBox} Class instance for chained method calls.
+     */
     bindDocumentClickListener() {
         document.addEventListener('click', () => {
             closeNotifications();

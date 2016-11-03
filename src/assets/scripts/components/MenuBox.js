@@ -11,16 +11,37 @@
 
 import renderMenuBox from '../../templates/components/MenuBox.html';
 
+/**
+ * Menu Box Component
+ *
+ * This component displays the main menu box. It serves as a container of MenuItem instances.
+ */
 class MenuBox {
+    /**
+     * Class Constructor
+     */
     constructor() {
+        /**
+         * @type {MenuItem[]}
+         */
         this.menuItems = [];
     }
 
+    /**
+     * Add item in the menu box.
+     *
+     * @param {MenuItem} menuItem The MenuItem instance to be added to the box.
+     *
+     * @return {MenuBox} Class instance for chained method calls.
+     */
     addItem(menuItem) {
         this.menuItems.push(menuItem);
         return this;
     }
 
+    /**
+     * Get the components HTML.
+     */
     getHtml() {
         let menuItemsHtml = '';
 

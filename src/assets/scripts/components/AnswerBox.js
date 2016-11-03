@@ -13,11 +13,29 @@ import renderAnswerBox from '../../templates/components/AnswerBox.html';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
 import {translate} from '../libraries/Languages';
 
+/**
+ * Answer Box Component
+ *
+ * This component handles the answering functionality by making a request to the server, which is also where
+ * the validation takes place. This component is used explicitely in the Riddle pages.
+ */
 class AnswerBox {
+    /**
+     * Class Constructor
+     *
+     * @param {String} hash Provide the hash of the current riddle.
+     */
     constructor(hash) {
         this.hash = hash;
     }
 
+    /**
+     * Append to container element.
+     *
+     * @param {HTMLElement} container The container element to be appended to.
+     *
+     * @return {AnswerBox} Class instance for chained method calls.
+     */
     appendTo(container) {
         const answerBox = document.createElement('div');
         answerBox.innerHTML = renderAnswerBox({
@@ -29,6 +47,13 @@ class AnswerBox {
         return this;
     }
 
+    /**
+     * Answer Button Click Handler
+     *
+     * This callback will send the user's answer to the server.
+     *
+     * @private
+     */
     _onAnswerClickListener() {
         // If the response is successful then navigate to the next riddle, otherwise display an
         // error notification.
@@ -70,6 +95,15 @@ class AnswerBox {
             });
     }
 
+    /**
+     * Post the answer to the server.
+     *
+     * @param {String} answer The answer to be sent for validation.
+     *
+     * @return {Promise} Returns a promise which will be resolved with the validation results.
+     *
+     * @private
+     */
     _postAnswer(answer) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
