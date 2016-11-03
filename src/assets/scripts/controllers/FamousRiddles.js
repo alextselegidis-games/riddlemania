@@ -13,11 +13,28 @@ import marked from 'marked';
 import {getCurrentLanguage, translate} from '../libraries/Languages';
 import renderFamousRiddles from '../../templates/controllers/FamousRiddles.html';
 
+/**
+ * Famous Riddles Controller
+ *
+ * This controller displays the "Famous Riddles" page of the app.
+ */
 class FamousRiddles {
+    /**
+     * Register the controller route.
+     *
+     * @param {Page} page The routing library instance.
+     * @param {String} route The required routing for the controller.
+     */
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
     }
 
+    /**
+     * Load page data.
+     *
+     * @param {Page.Context} context The routing library context.
+     * @param {Page.Next} next Next routing callback.
+     */
     load(context, next) {
         this
             ._getFamousRiddles(getCurrentLanguage())
@@ -32,6 +49,9 @@ class FamousRiddles {
         next();
     }
 
+    /**
+     * Display the page contents.
+     */
     display() {
         document.body.className = 'famous-riddles';
         const content = document.querySelector('main .row');
@@ -40,6 +60,15 @@ class FamousRiddles {
         });
     }
 
+    /**
+     * Get famous riddles content.
+     *
+     * @param {String} languageCode Current language code.
+     *
+     * @return {Promise} Returns a promise that will be resolved with the famous riddles content.
+     *
+     * @private
+     */
     _getFamousRiddles(languageCode) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();

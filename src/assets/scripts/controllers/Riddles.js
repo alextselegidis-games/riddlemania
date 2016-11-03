@@ -14,12 +14,29 @@ import renderRiddles from '../../templates/controllers/Riddles.html';
 import AnswerBox from '../components/AnswerBox';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
 
+/**
+ * Riddles Controller
+ *
+ * This controller displays the "Riddles" page of the app.
+ */
 class Riddles {
+    /**
+     * Register the controller route.
+     *
+     * @param {Page} page The routing library instance.
+     * @param {String} route The required routing for the controller.
+     */
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
         page(route + '/:hash', this.load.bind(this), this.display.bind(this));
     }
 
+    /**
+     * Load page data.
+     *
+     * @param {Page.Context} context The routing library context.
+     * @param {Page.Next} next Next routing callback.
+     */
     load(context, next) {
         this
             ._getRiddle(context.params.hash)
@@ -42,6 +59,9 @@ class Riddles {
         next();
     }
 
+    /**
+     * Display the page contents.
+     */
     display() {
         document.body.className = 'riddles';
         const content = document.querySelector('main .row');
@@ -50,6 +70,15 @@ class Riddles {
         });
     }
 
+    /**
+     * Get the riddle information with an AJAX request.
+     *
+     * @param {String} hash The hash of the riddle to be loaded.
+     *
+     * @return {Promise} Returns a promise that will be resolved with the riddle data.
+     *
+     * @private
+     */
     _getRiddle(hash) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();

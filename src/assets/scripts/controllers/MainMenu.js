@@ -15,11 +15,28 @@ import MenuItem from '../components/MenuItem';
 import {getCurrentLanguage, translate} from '../libraries/Languages';
 import renderMainMenu from '../../templates/controllers/MainMenu.html';
 
+/**
+ * Main Menu Controller
+ *
+ * This controller displays the "Main Menu" page of the app.
+ */
 class MainMenu {
+    /**
+     * Register the controller route.
+     *
+     * @param {Page} page The routing library instance.
+     * @param {String} route The required routing for the controller.
+     */
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
     }
 
+    /**
+     * Load page data.
+     *
+     * @param {Page.Context} context The routing library context.
+     * @param {Page.Next} next Next routing callback.
+     */
     load(context, next) {
         this
             ._getIntroduction(getCurrentLanguage())

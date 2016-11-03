@@ -13,11 +13,28 @@ import marked from 'marked';
 import {getCurrentLanguage, translate} from '../libraries/Languages';
 import renderAbout from '../../templates/controllers/About.html';
 
+/**
+ * About Controller
+ *
+ * This controller displays the "About" page of the app.
+ */
 class About {
+    /**
+     * Register the controller route.
+     *
+     * @param {Page} page The routing library instance.
+     * @param {String} route The required routing for the controller.
+     */
     register(page, route) {
         page(route, this.load.bind(this), this.display.bind(this));
     }
 
+    /**
+     * Load page data.
+     *
+     * @param {Page.Context} context The routing library context.
+     * @param {Page.Next} next Next routing callback.
+     */
     load(context, next) {
         this
             ._getAbout(getCurrentLanguage())
@@ -32,6 +49,9 @@ class About {
         next();
     }
 
+    /**
+     * Display the page contents.
+     */
     display() {
         document.body.className = 'about';
         const content = document.querySelector('main .row');
@@ -40,6 +60,15 @@ class About {
         });
     }
 
+    /**
+     * Get the about content with an AJAX request.
+     *
+     * @param {String} languageCode Current language code.
+     *
+     * @return {Promise} Returns a promise which will be resolved with the about content.
+     *
+     * @private
+     */
     _getAbout(languageCode) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
