@@ -1,5 +1,5 @@
-## Famous Riddles
+## Διάσημοι Γρίφοι
 
-This page is going to contain famous riddles and their solutions. It will serve more like a hall-of-fame of riddles. 
+Αυτή η σελίδα θα περιέχει διάσημους γρίφους και τις λύσεις τους. Θα παρέχει ένα hall-of-fame από γρίφους.
 
-**Currently under construction.**
+**Η σελίδα βρίσκεται ύπο καταστευή.**
