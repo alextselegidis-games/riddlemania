@@ -11,5 +11,6 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+define('DEBUG', true);
 define('STORAGE_RIDDLES_PATH', 'storage/riddles');
 define('STORAGE_LOGS_PATH', 'storage/logs');
