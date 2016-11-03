@@ -9,28 +9,63 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+/**
+ * Available Languages
+ *
+ * @type {Object}
+ */
 const languages = {
     en: 'English',
     gr: 'Ελληνικά'
 };
 
+/**
+ * Loaded Translation Sections
+ *
+ * @type {Object}
+ */
 const sections = {};
 
+/**
+ * Current Language Code
+ *
+ * @type {String}
+ */
 let currentLanguage = localStorage.getItem('r4u-language') || 'en';
 
+/**
+ * Get current language code.
+ *
+ * @return {String} Returns the language code.
+ */
 export function getCurrentLanguage() {
     return currentLanguage;
 }
 
+/**
+ * Set current language code.
+ *
+ * @param {String} languageCode Provide one of the available language codes.
+ */
 export function setCurrentLanguage(languageCode) {
     currentLanguage = languageCode;
     localStorage.setItem('r4u-language', languageCode);
 }
 
+/**
+ * Get the available languages object.
+ *
+ * @return {Object} The object contains the language codes and names.
+ */
 export function getAvailableLanguages() {
     return languages;
 }
 
+/**
+ * Load all translation sections from the server.
+ *
+ * @return {Promise.<*>} Returns a promise which will be resolved once all the sections are fetched.
+ */
 export function loadAllSections() {
     const promises = [];
     const sections = [
@@ -45,6 +80,13 @@ export function loadAllSections() {
     return Promise.all(promises);
 }
 
+/**
+ * Load a specific translation section from the server.
+ *
+ * @param {String} name The section name to be loaded.
+ *
+ * @return {Promise} Returns a promise which will be resolved once the section is loaded.
+ */
 export function loadSection(name) {
     return new Promise((resolve) => {
         var request = new XMLHttpRequest();
@@ -67,6 +109,14 @@ export function loadSection(name) {
     });
 }
 
+/**
+ * Get the translation for a specific key.
+ *
+ * @param {String} key The translation key.
+ * @param {String} section The translation section.
+ *
+ * @return {String} Returns the translation content.
+ */
 export function translate(key, section) {
     return sections[section][key];
 }

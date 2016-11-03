@@ -13,6 +13,13 @@ import {translate} from './Languages';
 
 // @todo Add animation effect to the notification open/close.
 
+/**
+ * Add new notification to the notification box.
+ *
+ * @param {String} message The notification message.
+ *
+ * @return {HTMLElement} Returns the element of the notification.
+ */
 export function addNotification(message) {
     const notification = document.createElement('li');
     notification.innerHTML = message;
@@ -20,10 +27,16 @@ export function addNotification(message) {
     return notification;
 }
 
+/**
+ * Clear all the notification entries.
+ */
 export function clearNotifications() {
     document.querySelector('.notifications ul').innerHTML = '';
 }
 
+/**
+ * Open the notifications box.
+ */
 export function openNotifications() {
     document.querySelector('.notification-box').classList.add('open');
 
@@ -39,6 +52,9 @@ export function openNotifications() {
     document.querySelector('.notifications').style.display = 'block';
 }
 
+/**
+ * Close the notifications box.
+ */
 export function closeNotifications() {
     document.querySelector('.notification-box').classList.remove('open');
 

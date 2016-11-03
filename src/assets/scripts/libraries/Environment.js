@@ -9,6 +9,11 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+/**
+ * Register Global Error Handler
+ *
+ * Handles the application errors by providing extra logging information.
+ */
 export function registerErrorHandler() {
     window.onerror = function() {
         const content = document.getElementById('content');

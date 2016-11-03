@@ -15,6 +15,11 @@ import About from '../controllers/About';
 import FamousRiddles from '../controllers/FamousRiddles';
 import Riddles from '../controllers/Riddles';
 
+/**
+ * Available Application Routes
+ *
+ * @type {Object}
+ */
 const routes = {
     '/': new MainMenu(),
     '/about': new About(),
@@ -22,6 +27,9 @@ const routes = {
     '/riddles': new Riddles()
 };
 
+/**
+ * Register the application routes.
+ */
 export function registerRoutes() {
     let base = location.pathname;
 
