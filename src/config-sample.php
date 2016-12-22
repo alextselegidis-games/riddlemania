@@ -12,5 +12,4 @@
  * ---------------------------------------------------------------------------- */
 
 define('DEBUG', true);
-define('STORAGE_RIDDLES_PATH', 'storage/riddles');
-define('STORAGE_LOGS_PATH', 'storage/logs');
+define('BASE_PATH', __DIR__);
