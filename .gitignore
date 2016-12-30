@@ -4,3 +4,6 @@ npm-debug.log
 src/bundle/*
 !src/bundle/index.html
 src/config.php
+src/storage/logs/*
+!src/storage/logs/.htaccess
+!src/storage/logs/index.html
