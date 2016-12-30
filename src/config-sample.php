@@ -16,3 +16,6 @@ define('DEBUG', true);
 
 /** Defines the base filesystem path. */
 define('BASE_PATH', __DIR__);
+
+/** Defines the initial riddle hash. */
+define('INITIAL_RIDDLE_HASH', '28101d71d773c2d94ee80cb0d48a7477');
