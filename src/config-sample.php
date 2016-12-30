@@ -11,5 +11,8 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+/** Defines the application environment. */
 define('DEBUG', true);
+
+/** Defines the base filesystem path. */
 define('BASE_PATH', __DIR__);
