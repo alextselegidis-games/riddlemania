@@ -16,8 +16,6 @@ use Riddles4U\System\App;
 require_once __DIR__ . '/autoload.php';
 require_once __DIR__ . '/config.php';
 
-exit;
-
 /*
  * Backend API Access File
  *
@@ -60,7 +58,7 @@ $app->get('/riddles/:hash', function ($hash) use ($app) {
     $app->output
         ->setStatus(200)
         ->setContentType('application/json')
-        ->setOutput($response);
+        ->setJsonOutput($response);
 });
 
 $app->post('/riddles/:hash/validate', function ($hash) use ($app) {
@@ -83,7 +81,7 @@ $app->post('/riddles/:hash/validate', function ($hash) use ($app) {
     $app->output
         ->setStatus(200)
         ->setContentType('application/json')
-        ->setOutput($response);
+        ->setJsonOutput($response);
 });
 
 $app->error(function (Exception $exception) use ($app) {
@@ -92,7 +90,7 @@ $app->error(function (Exception $exception) use ($app) {
     $app->output
         ->setStatus($exception->getCode())
         ->setHeader('application/json')
-        ->setOutput([
+        ->setJsonOutput([
             'exception' => true,
             'code' => $exception->getCode(),
             'message' => $exception->getMessage()
