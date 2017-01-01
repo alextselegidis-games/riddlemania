@@ -17,7 +17,7 @@ import {translate, getLanguageCode} from '../libraries/Languages';
  * Answer Box Component
  *
  * This component handles the answering functionality by making a request to the server, which is also where
- * the validation takes place. This component is used explicitely in the Riddle pages.
+ * the validation takes place. This component is used explicitly in the Riddle pages.
  */
 class AnswerBox {
     /**
