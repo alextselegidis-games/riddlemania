@@ -44,7 +44,7 @@ class Riddles {
                 document.querySelector('.riddle-title').innerHTML = riddle.title;
                 document.querySelector('.riddle-content').innerHTML = riddle.content;
                 const answerBox = new AnswerBox(context.params.hash);
-                answerBox.appendTo(document.querySelector('.answer-box'));
+                answerBox.appendTo(document.querySelector('.answer-box-content'));
             })
             .catch(exception => {
                 addNotification('Could not fetch riddle!');

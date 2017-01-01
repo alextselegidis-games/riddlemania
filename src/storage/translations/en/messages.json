@@ -1,4 +1,7 @@
 {
   "notificationsPlaceholder": "There are no notifications.",
-  "answerPlaceholder": "Enter your answer here …"
+  "answerPlaceholder": "Enter your answer here …",
+  "validAnswer": "Your answer is valid!",
+  "invalidAnswer": "Your answer is invalid!",
+  "endOfGame": "Congratulations! You've completed all riddles! Visit the page again later as new riddles are being added all the time."
 }

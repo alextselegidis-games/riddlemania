@@ -42,29 +42,35 @@ class AnswerBox {
             answerPlaceholder: translate('answerPlaceholder', 'messages'),
             answer: translate('answer', 'labels')
         });
-        answerBox.querySelector('.btn.answer').addEventListener('click', () => this._onAnswerClickListener());
+        answerBox
+            .querySelector('form.answer-box')
+            .addEventListener('submit', event => this._onFormSubmitListener(event));
         container.appendChild(answerBox);
+        answerBox.querySelector('input[type=text]').focus();
         return this;
     }
 
     /**
-     * Answer Button Click Handler
+     * Answer Box Form Submit Handler
      *
      * This callback will send the user's answer to the server.
      *
+     * @param {Event} event Contains the event information.
+     *
      * @private
      */
-    _onAnswerClickListener() {
-        // If the response is successful then navigate to the next riddle, otherwise display an
-        // error notification.
+    _onFormSubmitListener(event) {
+        event.preventDefault();
+
+        // If the response is successful then navigate to the next riddle, otherwise display an error notification.
         const answer = document.querySelector('.answer-box input').value;
 
         this
             ._postAnswer(answer, getLanguageCode())
             .then(response => {
-                if (response.success) {
+                if (response.success && response.nextRiddleHash) {
                     document.body.classList.add('success');
-                    addNotification('The provided answer is not valid.');
+                    addNotification(translate('validAnswer', 'messages'));
                     openNotifications();
                     localStorage.setItem('r4u-riddle', response.nextRiddleHash);
                     setTimeout(() => {
@@ -73,9 +79,20 @@ class AnswerBox {
                         clearNotifications();
                         document.body.classList.remove('success');
                     }, 2000);
+                } else if (response.success && !response.nextRiddleHash) {
+                    document.body.classList.add('success');
+                    addNotification(translate('validAnswer', 'messages'));
+                    addNotification(`<br><h4>${translate('endOfGame', 'messages')}</h4>`);
+                    openNotifications();
+                    setTimeout(() => {
+                        location.href = '#!/';
+                        closeNotifications();
+                        clearNotifications();
+                        document.body.classList.remove('success');
+                    }, 5000);
                 } else {
                     document.body.classList.add('failure');
-                    addNotification('The provided answer is not valid.');
+                    addNotification(translate('invalidAnswer', 'messages'));
                     openNotifications();
                     setTimeout(() => {
                         closeNotifications();
@@ -113,7 +130,7 @@ class AnswerBox {
 
             request.onload = function() {
                 if (this.status >= 200 && this.status < 400) {
-                    resolve(this.response);
+                    resolve(JSON.parse(this.response));
                 } else {
                     reject(this.response);
                 }
