@@ -11,7 +11,7 @@
 
 import renderAnswerBox from '../../templates/components/AnswerBox.html';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
-import {translate, getCurrentLanguage} from '../libraries/Languages';
+import {translate, getLanguageCode} from '../libraries/Languages';
 
 /**
  * Answer Box Component
@@ -60,7 +60,7 @@ class AnswerBox {
         const answer = document.querySelector('.answer-box input').value;
 
         this
-            ._postAnswer(answer, getCurrentLanguage())
+            ._postAnswer(answer, getLanguageCode())
             .then(response => {
                 if (response.success) {
                     document.body.classList.add('success');

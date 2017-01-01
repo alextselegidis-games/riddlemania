@@ -12,7 +12,7 @@
 import '../styles/index.pcss';
 import {registerRoutes} from './libraries/Routes';
 import {registerErrorHandler} from './libraries/Environment';
-import {loadAllSections, getAvailableLanguages, getCurrentLanguage} from './libraries/Languages';
+import {loadAllSections, getAvailableLanguages, getLanguageCode} from './libraries/Languages';
 import LanguageSwitch from './components/LanguageSwitch';
 import NotificationBox from './components/NotificationBox';
 
@@ -25,7 +25,7 @@ loadAllSections()
 
         const languageSwitch = new LanguageSwitch(getAvailableLanguages());
         languageSwitch
-            .setCurrentLanguage(getCurrentLanguage())
+            .setCurrentLanguage(getLanguageCode())
             .appendTo(tools)
             .bindLanguageClickListener();
 

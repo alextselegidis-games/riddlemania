@@ -9,7 +9,7 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-import {translate, getCurrentLanguage} from '../libraries/Languages';
+import {translate, getLanguageCode} from '../libraries/Languages';
 import renderRiddles from '../../templates/controllers/Riddles.html';
 import AnswerBox from '../components/AnswerBox';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
@@ -39,7 +39,7 @@ class Riddles {
      */
     load(context, next) {
         this
-            ._getRiddle(context.params.hash, getCurrentLanguage())
+            ._getRiddle(context.params.hash, getLanguageCode())
             .then(riddle => {
                 document.querySelector('.riddle-title').innerHTML = riddle.title;
                 document.querySelector('.riddle-content').innerHTML = riddle.content;

@@ -12,7 +12,7 @@
 import marked from 'marked';
 import MenuBox from '../components/MenuBox';
 import MenuItem from '../components/MenuItem';
-import {getCurrentLanguage, translate} from '../libraries/Languages';
+import {getLanguageCode, translate} from '../libraries/Languages';
 import renderMainMenu from '../../templates/controllers/MainMenu.html';
 
 /**
@@ -39,7 +39,7 @@ class MainMenu {
      */
     load(context, next) {
         this
-            ._getIntroduction(getCurrentLanguage())
+            ._getIntroduction(getLanguageCode())
             .then((response) => {
                 const introduction = document.querySelector('.introduction');
                 introduction.innerHTML = marked(response);

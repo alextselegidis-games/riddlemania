@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import marked from 'marked';
-import {getCurrentLanguage, translate} from '../libraries/Languages';
+import {getLanguageCode, translate} from '../libraries/Languages';
 import renderFamousRiddles from '../../templates/controllers/FamousRiddles.html';
 
 /**
@@ -37,7 +37,7 @@ class FamousRiddles {
      */
     load(context, next) {
         this
-            ._getFamousRiddles(getCurrentLanguage())
+            ._getFamousRiddles(getLanguageCode())
             .then((response) => {
                 const famousRiddles = document.querySelector('.famous-riddles-content');
                 famousRiddles.innerHTML = marked(response);

@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import page from 'page';
-import {setCurrentLanguage, loadAllSections} from '../libraries/Languages';
+import {setLanguageCode, loadAllSections} from '../libraries/Languages';
 import renderLanguageSwitch from '../../templates/components/LanguageSwitch.html';
 
 /**
@@ -100,7 +100,7 @@ class LanguageSwitch {
                 return;
             }
 
-            setCurrentLanguage(event.target.getAttribute('data-language'));
+            setLanguageCode(event.target.getAttribute('data-language'));
 
             loadAllSections().then(() => {
                 const route = location.hash.replace('#!', '');

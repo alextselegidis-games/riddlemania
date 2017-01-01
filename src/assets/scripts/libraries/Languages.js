@@ -38,7 +38,7 @@ let currentLanguage = localStorage.getItem('r4u-language') || 'en';
  *
  * @return {String} Returns the language code.
  */
-export function getCurrentLanguage() {
+export function getLanguageCode() {
     return currentLanguage;
 }
 
@@ -47,7 +47,7 @@ export function getCurrentLanguage() {
  *
  * @param {String} languageCode Provide one of the available language codes.
  */
-export function setCurrentLanguage(languageCode) {
+export function setLanguageCode(languageCode) {
     currentLanguage = languageCode;
     localStorage.setItem('r4u-language', languageCode);
 }
@@ -90,7 +90,7 @@ export function loadAllSections() {
 export function loadSection(name) {
     return new Promise((resolve) => {
         var request = new XMLHttpRequest();
-        request.open('GET', `storage/translations/${getCurrentLanguage()}/${name}.json`, true);
+        request.open('GET', `storage/translations/${getLanguageCode()}/${name}.json`, true);
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {

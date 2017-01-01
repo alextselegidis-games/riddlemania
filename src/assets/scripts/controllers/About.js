@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import marked from 'marked';
-import {getCurrentLanguage, translate} from '../libraries/Languages';
+import {getLanguageCode, translate} from '../libraries/Languages';
 import renderAbout from '../../templates/controllers/About.html';
 
 /**
@@ -37,7 +37,7 @@ class About {
      */
     load(context, next) {
         this
-            ._getAbout(getCurrentLanguage())
+            ._getAbout(getLanguageCode())
             .then((response) => {
                 const about = document.querySelector('.about-content');
                 about.innerHTML = marked(response);
