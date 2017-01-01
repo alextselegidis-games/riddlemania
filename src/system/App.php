@@ -136,13 +136,13 @@ class App
             $error = error_get_last();
 
             if ($error['type'] === E_ERROR) {
-                $exception = new Exception($error['message'], $error['number']);
+                $exception = new \Exception($error['message'], $error['number']);
                 $callback($exception);
             }
         });
 
         set_error_handler(function ($number, $message, $file, $line) use ($callback) {
-            $exception = new Exception($message, $number);
+            $exception = new \Exception($message, $number);
             $callback($exception);
         });
     }

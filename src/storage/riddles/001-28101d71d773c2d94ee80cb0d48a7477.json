@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "For LOTR Fans!",
+    "gr": "Για τους φίλους του Άρχοντα των Δαχτυλιδιών!"
+  },
+  "content": {
+    "en": "Say friend and you'll pass.",
+    "gr": "Πες φίλε και θα περάσεις."
+  },
+  "answer": {
+    "en": "/friend/iu",
+    "gr": "/φίλε|φιλε/i"
+  },
+  "created": "2016-11-03 11:25:00",
+  "modified": "2016-11-03 11:48:00",
+  "meta": "The meta property contains hidden information about the riddle.",
+  "categories": [
+    "test-category"
+  ]
+}

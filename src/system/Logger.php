@@ -48,10 +48,12 @@ class Logger
 
         if (!file_exists($path)) {
             touch($path);
+            chmod($path, 0777);
         }
 
-        $handle = fopen($path, 'ba');
+        $handle = fopen($path, 'w+');
         fwrite($handle, $message);
+        fclose($handle);
     }
 
     /**
@@ -61,6 +63,6 @@ class Logger
      */
     protected function _getFilename()
     {
-        return $this->storagePath . '/logs/' . date('Y-m-d.log');
+        return date('Y-m-d') . '.log';
     }
 }

@@ -11,7 +11,7 @@
 
 import renderAnswerBox from '../../templates/components/AnswerBox.html';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
-import {translate} from '../libraries/Languages';
+import {translate, getCurrentLanguage} from '../libraries/Languages';
 
 /**
  * Answer Box Component
@@ -60,7 +60,7 @@ class AnswerBox {
         const answer = document.querySelector('.answer-box input').value;
 
         this
-            ._postAnswer(answer)
+            ._postAnswer(answer, getCurrentLanguage())
             .then(response => {
                 if (response.success) {
                     document.body.classList.add('success');
@@ -99,15 +99,16 @@ class AnswerBox {
      * Post the answer to the server.
      *
      * @param {String} answer The answer to be sent for validation.
+     * @param {String} languageCode Code of the current language.
      *
      * @return {Promise} Returns a promise which will be resolved with the validation results.
      *
      * @private
      */
-    _postAnswer(answer) {
+    _postAnswer(answer, languageCode) {
         return new Promise((resolve, reject) => {
             const request = new XMLHttpRequest();
-            request.open('POST', `api.php/riddles/${this.hash}/validate`, true);
+            request.open('POST', `api.php/riddles/${this.hash}/validate?lang=${languageCode}`, true);
             request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
             request.onload = function() {

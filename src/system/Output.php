@@ -31,7 +31,7 @@ class Output
      */
     public function setStatus($status)
     {
-        http_send_status($status);
+        http_response_code($status);
 
         return $this;
 	}

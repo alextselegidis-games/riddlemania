@@ -41,6 +41,7 @@ class Riddle
     {
         $this->storagePath = $storagePath;
         $this->riddle = [];
+        $this->hash = '';
     }
 
     /**
@@ -69,7 +70,7 @@ class Riddle
 
         $directory = scandir($path);
 
-        foreach($directory as $entry) {
+        foreach ($directory as $entry) {
             if ($entry === '.' || $entry === '..') {
                 continue;
             }
@@ -81,7 +82,7 @@ class Riddle
         }
 
         return $this;
-	}
+    }
 
     /**
      * Validate the provide answer.
@@ -89,11 +90,43 @@ class Riddle
      * This method will check if the provided string answer matches the one from the loaded riddle.
      *
      * @param string $answer The answer to be validated.
+     * @param string $languageCode The code of the language to be validated.
      *
      * @return bool Returns the validation result.
      */
-    public function validate($answer)
+    public function validate($answer, $languageCode)
     {
-        return (bool)preg_match($this->riddle['answer'], $answer);
-	}
+        return (bool)preg_match($this->riddle['answer'][$languageCode], $answer);
+    }
+
+    /**
+     * Get the next riddle hash.
+     *
+     * @param string $currentHash The current riddle hash.
+     *
+     * @return string Returns the hash of the next riddle.
+     */
+    public function getNextHash($currentHash)
+    {
+        $path = $this->storagePath . '/riddles';
+
+        $directory = scandir($path);
+
+        $nextHash = null;
+
+        foreach ($directory as $index => $entry) {
+            if ($entry === '.' || $entry === '..' || $entry === 'index.html' || $entry === '.htaccess') {
+                continue;
+            }
+
+            if (strpos($entry, $currentHash) !== false) {
+                $filename = array_key_exists($index + 1, $directory) ? $directory[$index + 1] : '';
+                preg_match('/[0-9]-(.*).json$/', $filename, $matches);
+                $nextHash = array_pop($matches);
+                break;
+            }
+        }
+
+        return $nextHash;
+    }
 }
