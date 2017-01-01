@@ -16,7 +16,7 @@
  */
 const languages = {
     en: 'English',
-    gr: 'Ελληνικά'
+    el: 'Ελληνικά'
 };
 
 /**
