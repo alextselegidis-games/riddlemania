@@ -3,7 +3,7 @@
  *
  * @package     Riddles4U
  * @author      Alex Tselegidis <alextselegidis@gmail.com>
- * @copyright   Copyright (c) 2016, BigBlackCode
+ * @copyright   Copyright (c) 2017, BigBlackCode
  * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
  * @link        http://riddles4u.com
  * @since       v1.0.0
@@ -32,7 +32,7 @@ class LanguageSwitch {
         this.availableLanguages = availableLanguages;
 
         /**
-         * @type {string}
+         * @type {String}
          */
         this.currentLanguage = 'en';
     }
