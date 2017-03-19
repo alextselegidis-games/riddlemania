@@ -17,21 +17,6 @@ use Riddles4U\System\Constants;
 require_once __DIR__ . '/autoload.php';
 require_once __DIR__ . '/config.php';
 
-/*
- * Backend API Access File
- *
- * Supported Operations:
- *
- *   - Get Riddle Question
- *   - Check Riddle Answer
- *
- * Coming Soon:
- *
- *   - Gather statistics
- *   - Get Ad Image
- *   - Redirect To Ad URL
- */
-
 $config = [
     'name' => Constants::APP_NAME,
     'vendor' => Constants::VENDOR,
