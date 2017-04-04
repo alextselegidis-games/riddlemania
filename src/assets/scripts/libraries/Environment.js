@@ -16,11 +16,11 @@
  */
 export function registerErrorHandler() {
     window.onerror = function() {
-        const content = document.getElementById('content');
         let opacity = 1;
+
         const fadeAnimationInterval = setInterval(() => {
             opacity -= 0.1;
-            content.style.opacity = opacity;
+            document.body.style.opacity = opacity;
 
             if (opacity < 0.3) {
                 clearInterval(fadeAnimationInterval);
