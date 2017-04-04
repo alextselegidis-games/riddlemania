@@ -12,6 +12,7 @@
 import renderAnswerBox from '../../templates/components/AnswerBox.html';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../libraries/Notifications';
 import {translate, getLanguageCode} from '../libraries/Languages';
+import page from 'page';
 
 /**
  * Answer Box Component
@@ -74,7 +75,7 @@ class AnswerBox {
                     openNotifications();
                     localStorage.setItem('r4u-riddle', response.nextRiddleHash);
                     setTimeout(() => {
-                        page(`riddles/${response.nextRiddleHash}`);
+                        page(`#!/riddles/${response.nextRiddleHash}`);
                         closeNotifications();
                         clearNotifications();
                         document.body.classList.remove('success');
