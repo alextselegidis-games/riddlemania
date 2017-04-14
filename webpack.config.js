@@ -9,16 +9,16 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-var development = process.env.NODE_ENV !== 'production';
-var webpack = require('webpack');
-var notifier = require('webpack-notifier');
-var plugins = [new notifier()];
-var path = require('path');
-var postcssImport = require('postcss-import');
-var precss = require('precss');
-var autoprefixer = require('autoprefixer');
-var color = require('postcss-color-function');
-var calc = require('postcss-calc');
+const development = process.env.NODE_ENV !== 'production';
+const webpack = require('webpack');
+const notifier = require('webpack-notifier');
+const plugins = [new notifier()];
+const path = require('path');
+const postcssImport = require('postcss-import');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
+const color = require('postcss-color-function');
+const calc = require('postcss-calc');
 
 if (!development) {
     plugins.push(new webpack.optimize.DedupePlugin());
@@ -29,7 +29,7 @@ if (!development) {
 module.exports = {
     devtool: development ? 'source-map' : '',
     context: path.resolve(__dirname, 'src'),
-    entry: './assets/scripts/index.js',
+    entry: './app/index.js',
     output: {
         path: path.resolve(__dirname, 'src/bundle'),
         filename: 'scripts.js'

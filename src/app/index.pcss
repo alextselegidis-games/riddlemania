@@ -1,0 +1,181 @@
+/* ----------------------------------------------------------------------------
+ * Riddles4U - Amazing Riddles Game Platform
+ *
+ * @package     Riddles4U
+ * @author      Alex Tselegidis <alextselegidis@gmail.com>
+ * @copyright   Copyright (c) 2017, BigBlackCode
+ * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
+ * @link        http://riddles4u.com
+ * @since       v1.0.0
+ * ---------------------------------------------------------------------------- */
+
+@import 'https://fonts.googleapis.com/css?family=Advent+Pro';
+@import '../../node_modules/normalize.css/normalize.css';
+@import './grid.pcss';
+@import './variables.pcss';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    max-width: 1280px;
+    margin: 0 auto calc($footer-height * -1);
+}
+
+body {
+    padding: $padding-large;
+    box-sizing: border-box;
+    background: $brand-primary;
+    color: $text-color;
+    font-family: $font-family;
+    font-size: $font-size-base;
+    line-height: 1.5;
+    transition: background-color .3s linear;
+}
+
+header {
+    .columns {
+        margin-bottom: calc($margin-large * 2);
+    }
+
+    .logo {
+        img {
+            display: block;
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+    }
+}
+
+main {
+    overflow: auto;
+    padding: $padding-base;
+
+    > .row {
+        margin-bottom: $margin-large;
+    }
+}
+
+footer {
+    padding: $padding-base;
+    font-size: .9rem;
+    text-align: left;
+
+    .social-share {
+        text-align: right;
+
+        img {
+            width: 30px;
+            height: 30px;
+            margin-right: $margin-base;
+        }
+    }
+}
+
+footer, .push {
+    height: $footer-height;
+    max-width: 1280px;
+}
+
+a {
+    color: $text-color;
+    text-decoration: none !important;
+    transition: opacity 0.2s linear;
+
+    &:hover {
+        opacity: .5;
+    }
+}
+
+input {
+    padding: calc($padding-base / 2) $padding-base;
+    color: color($text-color blackness(85%));
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: $margin-base;
+    padding: 0;
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 28px;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.2s linear;
+
+    &:hover {
+        opacity: .5;
+    }
+
+    img {
+        width: 10px;
+        height: 10px;
+        float: left;
+        margin-top: 16px;
+        margin-right: $margin-base;
+    }
+}
+
+.input-group {
+    input {
+        min-width: 230px;
+        padding: $padding-base calc($padding-base / 2);
+        background: none;
+        color: $text-color;
+        border-bottom: 2px dashed $text-color;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        font-style: italic;
+        outline: none;
+    }
+}
+
+@media(min-width: $breakpoint-sm) {
+    body {
+        padding: calc($padding-large * 2);
+    }
+
+    header {
+        .logo {
+            img {
+                float: left;
+            }
+        }
+
+        .tools {
+            & > div {
+                float: left;
+                text-align: right;
+                display: inline-block;
+            }
+        }
+    }
+
+    .btn {
+        margin-bottom: $margin-large;
+        font-size: 36px;
+
+        img {
+            width: 16px;
+            height: 16px;
+            margin-top: $margin-large;
+        }
+    }
+
+    .input-group {
+        input {
+            min-width: 350px;
+        }
+    }
+}
