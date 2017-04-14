@@ -1,10 +1,19 @@
 # Riddles4U
-> Amazing riddles game platform with dynamic content loading. 
 
-Riddles4U is going to be an open source riddles gaming platform that will include dynamic content management, intuitive riddle gaming UI and other interesting features. 
+> Amazing game platform with original riddles. 
 
-The project is still on development, more info are coming soon. 
+**Update: We just released the Alpha version, try it out!** 
+
+Riddles4U is an online gaming platform that features riddles solving, progressive level difficulty and interactive user interface. 
+
+The platform is pretty lightweight and only requires an HTTP server with PHP installed and configured. No database is required as contents are being stored in plain files. 
+
+Solvers will progress through original levels while difficulty increases gradually. New riddles are being added all the time so make sure that you check the site on a regular basis. 
+
+This repository does not contain the original riddle files.
 
 http://riddles4u.com
 
-Copyright &copy; 2016 - BigBlackCode
+Copyright &copy; 2017 - BigBlackCode
+
+Code Licensed Under GPL-3.0, Content Rights Reserved
