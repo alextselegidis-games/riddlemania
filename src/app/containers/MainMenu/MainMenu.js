@@ -60,7 +60,7 @@ class MainMenu {
 
         menuBox
             .addItem(new MenuItem(translate('play', 'labels'), `#!/riddles/${nextRiddleHash}`))
-            .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
+            // .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
             .addItem(new MenuItem(translate('about', 'labels'), '#!/about'));
 
         const templateData = {
