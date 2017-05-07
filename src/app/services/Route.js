@@ -41,10 +41,17 @@ export function registerRoutes() {
 
     page.base(base);
 
+    let hash = location.hash;
+
     for (let route in routes) {
         routes[route].register(page, route);
     }
+
     page({
         hashbang: true
     });
+
+    if (hash) {
+        page(base + hash);
+    }
 }
