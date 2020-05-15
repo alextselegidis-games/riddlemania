@@ -1,8 +1,15 @@
 {
   "back": "Back",
   "notifications": "Notifications",
-  "play": "Play",
+  "continue": "Continue",
+  "newGame": "New Game",
   "famousRiddles": "Famous Riddles",
   "about": "About",
-  "answer": "Answer"
+  "answer": "Answer",
+  "share": "Share",
+  "submit": "Submit",
+  "email": "Email",
+  "message": "Message",
+  "feedback": "Feedback",
+  "congratulations": "Congratulations"
 }

@@ -12,7 +12,7 @@
 import {translate} from '../../../app/services/Language';
 import {openNotifications, closeNotifications} from '../../services/Notification';
 import renderNotificationBox from './NotificationBox.html';
-import './NotificationBox.pcss';
+import './NotificationBox.scss';
 
 /**
  * Notification Box Component
@@ -22,20 +22,20 @@ import './NotificationBox.pcss';
  */
 class NotificationBox {
     /**
-     * Append to container.
+     * Append to target.
      *
-     * @param {HTMLElement} container The container element to be appended to.
+     * @param {HTMLElement} target The target element to be appended to.
      *
      * @return {NotificationBox} Class instance for chained method calls.
      */
-    appendTo(container) {
+    appendTo(target) {
         const templateData = {
             notifications: translate('notifications', 'labels')
         };
 
         const tmp = document.createElement('div');
         tmp.innerHTML = renderNotificationBox(templateData);
-        container.appendChild(tmp.firstChild);
+        target.appendChild(tmp.firstChild);
 
         return this;
     }

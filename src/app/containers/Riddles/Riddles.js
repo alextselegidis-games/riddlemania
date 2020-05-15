@@ -13,7 +13,7 @@ import {translate, getLanguageCode} from '../../services/Language';
 import renderRiddles from './Riddles.html';
 import AnswerBox from '../../components/AnswerBox/AnswerBox';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../../services/Notification';
-import './Riddles.pcss';
+import './Riddles.scss';
 
 /**
  * Riddles Controller
@@ -55,6 +55,9 @@ class Riddles {
                     clearNotifications();
                 }, 3000);
                 console.error('Could not fetch riddle:', exception);
+            })
+            .finally(() => {
+                document.querySelector('.btn.back').style.visibility = 'visible';
             });
 
         next();
@@ -64,42 +67,28 @@ class Riddles {
      * Display the page contents.
      */
     display() {
+        document.querySelector('[name="theme-color"]').setAttribute('content', '#4c0099');
         document.body.className = 'riddles';
         const content = document.querySelector('main .row');
         content.innerHTML = renderRiddles({
             back: translate('back', 'labels')
         });
+        document.querySelector('.btn.back').style.visibility = 'hidden';
     }
 
     /**
      * Get the riddle information with an AJAX request.
-     *
-     * @param {String} hash The hash of the riddle to be loaded.
+     * The hash of the riddle to be loaded.
+     * @param {String} hash Unique riddle hash string.
      * @param {String} languageCode Code of the language to be used.
      *
      * @return {Promise} Returns a promise that will be resolved with the riddle data.
      *
      * @private
      */
-    _getRiddle(hash, languageCode) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.open('GET', `api.php/riddles/${hash}?lang=${languageCode}`, true);
-
-            request.onload = function() {
-                if (this.status >= 200 && this.status < 400) {
-                    resolve(JSON.parse(this.response));
-                } else {
-                    reject(this.response);
-                }
-            };
-
-            request.onerror = function() {
-                reject(this.response);
-            };
-
-            request.send();
-        });
+    async _getRiddle(hash, languageCode) {
+        const response = await fetch(`api.php/riddles/${hash}?lang=${languageCode}`, {credentials: 'include'});
+        return await response.json();
     }
 }
 

@@ -3,21 +3,96 @@
     <head>
         <meta charset="UTF-8">
         <title>Riddles4U - Play an Amazing Riddles Game</title>
-        <meta name="description" value="Riddles4U is a great riddles game with original questions and answers.">
+        <meta name="description" content="Riddles4U is a web game with original riddles and puzzles.">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <meta name="author" content="BigBlackCode (c) 2017">
+        <meta name="author" content="BigBlackCode (c) 2018">
         <meta name="keywords" content="Riddles, Game, Platform, Questions, Puzzle, Mind Game">
         <meta name="theme-color" content="#3498db">
-        <link rel="icon" type="image/png" sizes="96x96" href="app/images/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="app/images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="app/images/favicon-16x16.png">
+        <meta property="og:title" content="Riddles4U - Play an Amazing Riddles Game">
+        <meta property="og:description" content="Riddles4U is an online browser game with original riddles created by BigBlackCode. You can start solving our riddles by providing one-word answers while difficulty advances progressively.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://riddles4u.com">
+        <meta property="og:image" content="http://riddles4u.com/bundle/images/logo-square.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="bundle/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="bundle/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="bundle/images/favicon-16x16.png">
+        <style>
+            @-webkit-keyframes rotate-forever {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            @-moz-keyframes rotate-forever {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            @keyframes rotate-forever {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loading-spinner {
+                background: rgba(255, 255, 255, 0.5);
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 999;
+            }
+
+            .loading-spinner div {
+                animation-duration: 0.75s;
+                animation-iteration-count: infinite;
+                animation-name: rotate-forever;
+                animation-timing-function: linear;
+                height: 50px !important;
+                width: 50px !important;
+                box-sizing: border-box;
+                border: 8px solid #004099;
+                border-right-color: transparent;
+                border-radius: 50%;
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                bottom: 0;
+                left: 50%;
+                margin: -15px 0 -15px;
+            }
+
+            body {
+                background: white;
+            }
+
+            .wrapper, footer {
+                display: none;
+            }
+        </style>
     </head>
     <body>
+        <div class="loading-spinner">
+            <div></div>
+        </div>
+
         <div class="wrapper">
             <header class="container">
                 <div class="row">
                     <div class="logo six columns">
-                        <img src="app/images/logo.svg" alt="Riddles4U - Amazing Riddles Platform">
+                        <a href="#">
+                            <img src="bundle/images/logo.svg" alt="Riddles4U - Amazing Riddles Platform">
+                        </a>
                     </div>
                     <div class="tools six columns"></div>
                 </div>
@@ -31,25 +106,34 @@
             <div class="row">
                 <div class="six columns">
                     <a href="http://bigblackcode.github.io">BigBlackCode</a>
-                    &copy; 2017 - Alpha Stage
+                    &copy; <span id="copyright-year">2017</span> - v1.0.0
                     <br>
-                    Code Licensed Under GPL-3.0, Content Rights Reserved
+                    All Rights Reserved - <a href="#!/feedback">Feedback</a>
                 </div>
                 <div class="six columns social-share">
                     <a href="https://www.facebook.com/riddles4udotcom" title="Like Riddles4U on Facebook" target="_blank">
-                        <img src="app/images/facebook-official.svg" alt="Facebook">
+                        <img src="bundle/images/facebook-official.svg" alt="Facebook">
                     </a>
 
                     <a href="https://twitter.com/riddles4udotcom" title="Follow Riddles4U on Twitter" target="_blank">
-                        <img src="app/images/twitter-square.svg" alt="Twitter">
+                        <img src="bundle/images/twitter-square.svg" alt="Twitter">
                     </a>
 
                     <a href="https://github.com/BigBlackCode/riddles4u" title="Star Riddles4U on GitHub" target="_blank">
-                        <img src="app/images/github.svg" alt="GitHub">
+                        <img src="bundle/images/github.svg" alt="GitHub">
                     </a>
                 </div>
             </div>
         </footer>
         <script src="bundle/scripts.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41795706-6', 'auto');
+            ga('send', 'pageview');
+        </script>
     </body>
 </html>

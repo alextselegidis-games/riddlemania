@@ -14,16 +14,11 @@ const webpack = require('webpack');
 const notifier = require('webpack-notifier');
 const plugins = [new notifier()];
 const path = require('path');
-const postcssImport = require('postcss-import');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
-const color = require('postcss-color-function');
-const calc = require('postcss-calc');
 
 if (!development) {
-    plugins.push(new webpack.optimize.DedupePlugin());
-    plugins.push(new webpack.optimize.OccurenceOrderPlugin());
-    plugins.push(new webpack.optimize.UglifyJsPlugin());
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+        sourceMap: development
+    }));
 }
 
 module.exports = {
@@ -35,24 +30,41 @@ module.exports = {
         filename: 'scripts.js'
     },
     module: {
-        loaders: [
-            {test: /\.js$/, exclude: /node_modules/, loader: 'babel?presets[]=es2015'},
-            {test: /\.pcss$/, loader: 'style!css!postcss'},
-            {test: /\.html$/, loader: 'mustache'},
-            {test: /\.(woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-                loader: 'url?limit=100000&name=assets/asset-[hash].[ext]'}
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        'es2015',
+                        'es2017'
+                    ]
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    'mustache-loader'
+                ]
+            },
+            {
+                test: /\.(woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: '100000',
+                    name: 'assets/asset-[hash].[ext]'
+                }
+            }
         ]
     },
-    plugins: plugins,
-    postcss: function(webpack) {
-        return [
-            postcssImport({
-                addDependencyTo: webpack
-            }),
-            precss,
-            calc,
-            color,
-            autoprefixer
-        ];
-    }
+    plugins: plugins
 };

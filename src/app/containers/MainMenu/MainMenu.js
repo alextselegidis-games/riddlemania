@@ -14,7 +14,7 @@ import MenuBox from '../../components/MenuBox/MenuBox';
 import MenuItem from '../../components/MenuItem/MenuItem';
 import {getLanguageCode, translate} from '../../services/Language';
 import renderMainMenu from './MainMenu.html';
-import './MainMenu.pcss';
+import './MainMenu.scss';
 
 /**
  * Main Menu Controller
@@ -52,16 +52,26 @@ class MainMenu {
         next();
     }
 
+    /**
+     * Display the main menu page.
+     */
     display() {
+        document.querySelector('[name="theme-color"]').setAttribute('content', '#004099');
+
         document.body.className = 'main-menu';
 
         const menuBox = new MenuBox();
-        const nextRiddleHash = localStorage.getItem('r4u-riddle') || '28101d71d773c2d94ee80cb0d48a7477';
+        const nextRiddleHash = localStorage.getItem('r4u-riddle');
+
+        if (nextRiddleHash) {
+            menuBox.addItem(new MenuItem(translate('continue', 'labels'), `#!/riddles/${nextRiddleHash}`));
+        }
 
         menuBox
-            .addItem(new MenuItem(translate('play', 'labels'), `#!/riddles/${nextRiddleHash}`))
-            // .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
-            .addItem(new MenuItem(translate('about', 'labels'), '#!/about'));
+            .addItem(new MenuItem(translate('newGame', 'labels'), '#!/riddles/28101d71d773c2d94ee80cb0d48a7477'))
+            .addItem(new MenuItem(translate('famousRiddles', 'labels'), '#!/famous-riddles'))
+            .addItem(new MenuItem(translate('about', 'labels'), '#!/about'))
+            .addItem(new MenuItem(translate('feedback', 'labels'), '#!/feedback'));
 
         const templateData = {
             menuBox: menuBox.getHtml()
@@ -69,27 +79,27 @@ class MainMenu {
 
         const content = document.querySelector('main .row');
         content.innerHTML = renderMainMenu(templateData);
+
+        document.querySelector('a[href="#!/riddles/28101d71d773c2d94ee80cb0d48a7477"]').addEventListener('click', (event) => {
+            if (localStorage.getItem('r4u-riddle') !== null && !confirm(translate('thisWillResetYourProgress', 'messages'))) {
+                event.preventDefault();
+                return false;
+            }
+        });
     }
 
-    _getIntroduction(languageCode) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.open('GET', `storage/content/${languageCode}/introduction.md`, true);
-
-            request.onload = function() {
-                if (this.status >= 200 && this.status < 400) {
-                    resolve(this.response);
-                } else {
-                    reject(this.response);
-                }
-            };
-
-            request.onerror = function() {
-                reject(request);
-            };
-
-            request.send();
-        });
+    /**
+     * Get introduction contents.
+     *
+     * @param {String} languageCode Current language code.
+     *
+     * @return {Promise} Returns a promise that will be resolved with the introduction contents.
+     *
+     * @private
+     */
+    async _getIntroduction(languageCode) {
+        const response = await fetch(`storage/content/${languageCode}/introduction.md`, {credentials: 'include'});
+        return await response.text();
     }
 }
 

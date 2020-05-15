@@ -12,7 +12,7 @@
 import page from 'page';
 import {setLanguageCode, loadAllSections} from '../../services/Language';
 import renderLanguageSwitch from './LanguageSwitch.html';
-import './LanguageSwitch.pcss';
+import './LanguageSwitch.scss';
 
 /**
  * Language Switch Component
@@ -60,13 +60,13 @@ class LanguageSwitch {
     }
 
     /**
-     * Append component to container element.
+     * Append component to target element.
      *
-     * @param {HTMLElement} container The container to be append to.
+     * @param {HTMLElement} target The target to be append to.
      *
      * @return {LanguageSwitch} Class instance for chained method calls.
      */
-    appendTo(container) {
+    appendTo(target) {
         const languages = [];
 
         for (let languageCode in this.availableLanguages) {
@@ -83,7 +83,7 @@ class LanguageSwitch {
 
         const tmp = document.createElement('div');
         tmp.innerHTML = renderLanguageSwitch(templateData);
-        container.appendChild(tmp.firstChild);
+        target.appendChild(tmp.firstChild);
 
         return this;
     }
@@ -103,13 +103,7 @@ class LanguageSwitch {
 
             setLanguageCode(event.target.getAttribute('data-language'));
 
-            loadAllSections().then(() => {
-                const route = location.hash.replace('#!', '');
-                page(route);
-            });
-
-            document.querySelector('.language-switch .active').classList.remove('active');
-            event.target.parentNode.classList.add('active');
+            location.reload();
         });
 
         return this;

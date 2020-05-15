@@ -11,6 +11,8 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+date_default_timezone_set('Europe/Athens');
+
 use Riddles4U\System\App;
 use Riddles4U\System\Constants;
 
@@ -22,8 +24,9 @@ $config = [
     'vendor' => Constants::VENDOR,
     'version' => Constants::VERSION,
     'homepage' => Constants::HOMEPAGE,
+    'contactEmail' => Constants::CONTACT_EMAIL,
     'debug' => DEBUG,
-    'storagePath' => BASE_PATH . '/storage'
+    'storagePath' => BASE_PATH . '/storage',
 ];
 
 $app = new App($config);
@@ -60,6 +63,22 @@ $app->post('/riddles/:hash/validate', function ($hash) use ($app) {
     $response = $result
         ? ['success' => true, 'nextRiddleHash' => $app->riddle->getNextHash($hash)]
         : ['success' => false];
+
+    $app->output
+        ->setStatus(200)
+        ->setContentType('application/json')
+        ->setJsonOutput($response);
+});
+
+$app->post('/feedback', function() use ($app) {
+    $request = $app->input->getBody();
+
+    $app->logger->log(date('Y-m-d') . ' FEEDBACK ' . $request->email . ' ' . $request->message . ' '
+        . $request->recaptchaToken);
+
+    $app->notifications->feedback($request->email, $request->message, $request->recaptchaToken);
+
+    $response = ['success' => true];
 
     $app->output
         ->setStatus(200)

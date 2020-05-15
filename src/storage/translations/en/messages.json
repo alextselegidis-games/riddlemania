@@ -3,5 +3,12 @@
   "answerPlaceholder": "Enter your answer here …",
   "validAnswer": "Your answer is valid!",
   "invalidAnswer": "Your answer is invalid!",
-  "endOfGame": "Congratulations! You've completed all riddles! Visit the page again later as new riddles are being added all the time."
+  "gameOver": "You've completed all riddles! Visit the page again later as new riddles are being added all the time.",
+  "invalidEmailAddress": "Your email address is invalid!",
+  "emptyMessage": "The message is empty.",
+  "yourFeedbackIsImportant": "Your feedback is very important for us and will help us improve Riddles4U.",
+  "recaptchaFailed": "ReCaptcha failed, please try again.",
+  "thankYouForYourFeedback": "Thank you for your feedback.",
+  "anUnexpectedErrorOccurred": "An unexpected error occurred.",
+  "thisWillResetYourProgress": "This will reset your progress, are you sure that you want to continue?"
 }

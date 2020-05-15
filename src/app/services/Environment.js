@@ -10,6 +10,13 @@
  * ---------------------------------------------------------------------------- */
 
 /**
+ * Maximum answer length (must be the same as in the HTML).
+ *
+ * @type {Number}
+ */
+export const MAX_ANSWER_LENGTH = 100;
+
+/**
  * Register Global Error Handler
  *
  * Handles the application errors by providing extra logging information.
@@ -29,4 +36,13 @@ export function registerErrorHandler() {
 
         console.error('Riddles4U Error Handler: ', arguments);
     };
+}
+
+/**
+ * Toggles the loading spinner.
+ *
+ * @param {Boolean} [display=true] Display or hide the loading spinner
+ */
+export function toggleLoadingSpinner(display = true) {
+    document.querySelector('.loading-spinner').style.display = (display ? 'block' : 'none');
 }

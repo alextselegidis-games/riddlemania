@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import renderMenuItem from './MenuItem.html';
-import './MenuItem.pcss';
+import './MenuItem.scss';
 
 /**
  * Menu Item Component

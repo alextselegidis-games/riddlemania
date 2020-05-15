@@ -12,7 +12,7 @@
 import marked from 'marked';
 import {getLanguageCode, translate} from '../../services/Language';
 import renderAbout from './About.html';
-import './About.pcss';
+import './About.scss';
 
 /**
  * About Controller
@@ -54,6 +54,7 @@ class About {
      * Display the page contents.
      */
     display() {
+        document.querySelector('[name="theme-color"]').setAttribute('content', '#007599');
         document.body.className = 'about';
         const content = document.querySelector('main .row');
         content.innerHTML = renderAbout({
@@ -70,25 +71,9 @@ class About {
      *
      * @private
      */
-    _getAbout(languageCode) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.open('GET', `storage/content/${languageCode}/about.md`, true);
-
-            request.onload = function() {
-                if (this.status >= 200 && this.status < 400) {
-                    resolve(this.response);
-                } else {
-                    reject(this.response);
-                }
-            };
-
-            request.onerror = function() {
-                reject(request);
-            };
-
-            request.send();
-        });
+    async _getAbout(languageCode) {
+        const response = await fetch(`storage/content/${languageCode}/about.md`, {credentials: 'include'});
+        return await response.text();
     }
 }
 

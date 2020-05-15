@@ -1,9 +1,12 @@
+.DS_Store
 .idea
 node_modules
 npm-debug.log
 src/bundle/*
 !src/bundle/index.html
+!src/bundle/images
 src/config.php
 src/storage/logs/*
 !src/storage/logs/.htaccess
 !src/storage/logs/index.html
+src/storage/riddles/*.json

@@ -1,0 +1,45 @@
+/* ----------------------------------------------------------------------------
+ * Riddles4U - Amazing Riddles Game Platform
+ *
+ * @package     Riddles4U
+ * @author      Alex Tselegidis <alextselegidis@gmail.com>
+ * @copyright   Copyright (c) 2017, BigBlackCode
+ * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
+ * @link        http://riddles4u.com
+ * @since       v1.0.0
+ * ---------------------------------------------------------------------------- */
+
+@import '../../styles/variables';
+@import '../../styles/grid';
+
+.riddles {
+    background-color: $brand-riddles;
+
+    &.success {
+        background-color: $brand-success;
+
+        .notifications {
+            background-color: $brand-success !important;
+        }
+    }
+
+    &.failure {
+        background-color: $brand-danger;
+
+        .notifications {
+            background-color: $brand-danger !important;
+        }
+    }
+
+    .notifications {
+        background-color: $brand-riddles !important;
+    }
+
+    .riddle-title {
+
+    }
+
+    .riddle-content {
+        margin-bottom: $margin-large;
+    }
+}

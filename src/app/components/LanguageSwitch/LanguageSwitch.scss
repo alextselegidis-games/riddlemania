@@ -9,9 +9,30 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
+@import '../../styles/variables';
 
-.menu-box {
-    list-style: none;
-    padding-left: 0;
+.language-switch {
+    float: left;
+
+    ul {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            float: left;
+            margin-right: $margin-large;
+
+            &.active {
+                border-bottom: 2px dashed white;
+            }
+        }
+    }
+}
+
+@media(min-width: $breakpoint-sm) {
+    .language-switch {
+        width: 90%;
+    }
 }

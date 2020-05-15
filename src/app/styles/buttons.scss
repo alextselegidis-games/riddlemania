@@ -1,0 +1,71 @@
+/* ----------------------------------------------------------------------------
+ * Riddles4U - Amazing Riddles Game Platform
+ *
+ * @package     Riddles4U
+ * @author      Alex Tselegidis <alextselegidis@gmail.com>
+ * @copyright   Copyright (c) 2017, BigBlackCode
+ * @license     http://opensource.org/licenses/GPL-3.0 - GPLv3
+ * @link        http://riddles4u.com
+ * @since       v1.0.0
+ * ---------------------------------------------------------------------------- */
+
+@import 'variables';
+
+.btn {
+    font-family: $font-family;
+    display: inline-block;
+    margin-bottom: $margin-base;
+    padding: 0;
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 28px;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.2s linear;
+
+    &:hover {
+        opacity: .5;
+    }
+
+    img {
+        width: 10px;
+        height: 10px;
+        float: left;
+        margin-top: 16px;
+        margin-right: $margin-base;
+    }
+}
+
+@media(min-width: $breakpoint-sm) {
+    body {
+        padding: $padding-large * 2;
+    }
+
+    header {
+        .logo {
+            img {
+                float: left;
+            }
+        }
+
+        .tools {
+            & > div {
+                float: left;
+                text-align: right;
+                display: inline-block;
+            }
+        }
+    }
+
+    .btn {
+        margin-bottom: $margin-large;
+        font-size: 36px;
+
+        img {
+            width: 16px;
+            height: 16px;
+            margin-top: $margin-large;
+        }
+    }
+}

@@ -12,7 +12,7 @@
 import marked from 'marked';
 import {getLanguageCode, translate} from '../../services/Language';
 import renderFamousRiddles from './FamousRiddles.html';
-import './FamousRiddles.pcss';
+import './FamousRiddles.scss';
 
 /**
  * Famous Riddles Controller
@@ -54,6 +54,7 @@ class FamousRiddles {
      * Display the page contents.
      */
     display() {
+        document.querySelector('[name="theme-color"]').setAttribute('content', '#007599');
         document.body.className = 'famous-riddles';
         const content = document.querySelector('main .row');
         content.innerHTML = renderFamousRiddles({
@@ -70,25 +71,9 @@ class FamousRiddles {
      *
      * @private
      */
-    _getFamousRiddles(languageCode) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.open('GET', `storage/content/${languageCode}/famous-riddles.md`, true);
-
-            request.onload = function() {
-                if (this.status >= 200 && this.status < 400) {
-                    resolve(this.response);
-                } else {
-                    reject(this.response);
-                }
-            };
-
-            request.onerror = function() {
-                reject(this.response);
-            };
-
-            request.send();
-        });
+    async _getFamousRiddles(languageCode) {
+        const response = await fetch(`storage/content/${languageCode}/famous-riddles.md`, {credentials: 'include'});
+        return await response.text();
     }
 }
 

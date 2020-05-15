@@ -46,4 +46,9 @@ class Constants
      * @var string
      */
     const DEFAULT_LANGUAGE_CODE = 'en';
+
+    /**
+     * @var string
+     */
+    const CONTACT_EMAIL = 'riddles4udotcom@gmail.com';
 }

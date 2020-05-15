@@ -31,7 +31,7 @@ const sections = {};
  *
  * @type {String}
  */
-let currentLanguage = localStorage.getItem('r4u-language') || 'en';
+let currentLanguageCode = localStorage.getItem('r4u-language-code') || 'en';
 
 /**
  * Get current language code.
@@ -39,7 +39,7 @@ let currentLanguage = localStorage.getItem('r4u-language') || 'en';
  * @return {String} Returns the language code.
  */
 export function getLanguageCode() {
-    return currentLanguage;
+    return currentLanguageCode;
 }
 
 /**
@@ -48,8 +48,8 @@ export function getLanguageCode() {
  * @param {String} languageCode Provide one of the available language codes.
  */
 export function setLanguageCode(languageCode) {
-    currentLanguage = languageCode;
-    localStorage.setItem('r4u-language', languageCode);
+    currentLanguageCode = languageCode;
+    localStorage.setItem('r4u-language-code', languageCode);
 }
 
 /**
@@ -66,18 +66,19 @@ export function getAvailableLanguages() {
  *
  * @return {Promise.<*>} Returns a promise which will be resolved once all the sections are fetched.
  */
-export function loadAllSections() {
-    const promises = [];
-    const sections = [
+export async function loadAllSections() {
+    const sections = [];
+
+    const names = [
         'labels',
         'messages'
     ];
 
-    for (let name of sections) {
-        promises.push(loadSection(name));
+    for (let name of names) {
+        sections.push(await loadSection(name));
     }
 
-    return Promise.all(promises);
+    return sections;
 }
 
 /**
@@ -87,26 +88,12 @@ export function loadAllSections() {
  *
  * @return {Promise} Returns a promise which will be resolved once the section is loaded.
  */
-export function loadSection(name) {
-    return new Promise((resolve) => {
-        var request = new XMLHttpRequest();
-        request.open('GET', `storage/translations/${getLanguageCode()}/${name}.json`, true);
+export async function loadSection(name) {
+    const response = await fetch(`storage/translations/${getLanguageCode()}/${name}.json`, {credentials: 'include'});
 
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                sections[name] = JSON.parse(this.response);
-                resolve(this.response);
-            } else {
-                throw new Error('Could not load translation file: ', this.response);
-            }
-        };
+    sections[name] = await response.json();
 
-        request.onerror = function() {
-            throw new Error('Could not load translation file: ', request);
-        };
-
-        request.send()
-    });
+    return sections[name];
 }
 
 /**

@@ -9,10 +9,21 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import 'https://fonts.googleapis.com/css?family=Advent+Pro';
-@import '../../node_modules/normalize.css/normalize.css';
-@import './grid.pcss';
-@import './variables.pcss';
+// Reset Loading Spinner
+.wrapper, footer {
+    display: block;
+}
+
+.loading-spinner {
+    //display: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400');
+@import '../../../node_modules/normalize-scss/sass/normalize';
+@import 'variables';
+@import 'grid';
+@import 'forms';
+@import 'buttons';
 
 * {
     box-sizing: border-box;
@@ -27,23 +38,26 @@ body {
 .wrapper {
     min-height: 100%;
     max-width: 1280px;
-    margin: 0 auto calc($footer-height * -1);
+    margin: 0 auto $footer-height * -1;
 }
 
 body {
+    visibility: visible;
     padding: $padding-large;
+    margin: 0;
     box-sizing: border-box;
     background: $brand-primary;
     color: $text-color;
     font-family: $font-family;
     font-size: $font-size-base;
+    font-weight: 300;
     line-height: 1.5;
-    transition: background-color .3s linear;
+    transition: background-color .2s linear;
 }
 
 header {
     .columns {
-        margin-bottom: calc($margin-large * 2);
+        margin-bottom: $margin-large * 2;
     }
 
     .logo {
@@ -62,6 +76,10 @@ main {
 
     > .row {
         margin-bottom: $margin-large;
+    }
+
+    a {
+        border-bottom: 2px dashed $text-color;
     }
 }
 
@@ -96,54 +114,13 @@ a {
     }
 }
 
-input {
-    padding: calc($padding-base / 2) $padding-base;
-    color: color($text-color blackness(85%));
-}
-
-.btn {
-    display: inline-block;
-    margin-bottom: $margin-base;
-    padding: 0;
-    background: none;
-    border: none;
-    color: $text-color;
-    font-size: 28px;
-    cursor: pointer;
-    outline: none;
-    transition: opacity 0.2s linear;
-
-    &:hover {
-        opacity: .5;
-    }
-
-    img {
-        width: 10px;
-        height: 10px;
-        float: left;
-        margin-top: 16px;
-        margin-right: $margin-base;
-    }
-}
-
-.input-group {
-    input {
-        min-width: 230px;
-        padding: $padding-base calc($padding-base / 2);
-        background: none;
-        color: $text-color;
-        border-bottom: 2px dashed $text-color;
-        border-right: none;
-        border-left: none;
-        border-top: none;
-        font-style: italic;
-        outline: none;
-    }
+button {
+    font-weight: 300;
 }
 
 @media(min-width: $breakpoint-sm) {
     body {
-        padding: calc($padding-large * 2);
+        padding: $padding-large * 2;
     }
 
     header {
@@ -159,23 +136,6 @@ input {
                 text-align: right;
                 display: inline-block;
             }
-        }
-    }
-
-    .btn {
-        margin-bottom: $margin-large;
-        font-size: 36px;
-
-        img {
-            width: 16px;
-            height: 16px;
-            margin-top: $margin-large;
-        }
-    }
-
-    .input-group {
-        input {
-            min-width: 350px;
         }
     }
 }

@@ -9,25 +9,14 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
-@import '../../grid.pcss';
-
-.riddles {
-    background-color: $brand-riddles;
-
-    &.success {
-        background-color: $brand-success;
-    }
-
-    &.failure {
-        background-color: $brand-danger;
-    }
-
-    .riddle-title {
-
-    }
-
-    .riddle-content {
-        margin-bottom: $margin-large;
-    }
+/**
+ * Validate an email address.
+ *
+ * @param {String} email Email address.
+ *
+ * @return {Boolean} Returns the validation result.
+ */
+export function validateEmail(email) {
+    var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
 }

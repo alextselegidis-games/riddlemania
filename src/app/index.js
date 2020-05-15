@@ -9,9 +9,11 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-import './index.pcss';
+import './styles/index.scss';
+import 'whatwg-fetch';
+import 'babel-polyfill';
 import {registerRoutes} from './services/Route';
-import {registerErrorHandler} from './services/Environment';
+import {registerErrorHandler, toggleLoadingSpinner} from './services/Environment';
 import {loadAllSections, getAvailableLanguages, getLanguageCode} from './services/Language';
 import LanguageSwitch from './components/LanguageSwitch/LanguageSwitch';
 import NotificationBox from './components/NotificationBox/NotificationBox';
@@ -20,6 +22,8 @@ loadAllSections()
     .then(() => {
         registerRoutes();
         registerErrorHandler();
+
+        toggleLoadingSpinner(false);
 
         const tools = document.querySelector('header .tools');
 
@@ -35,3 +39,7 @@ loadAllSections()
             .bindToggleClickListener()
             .bindDocumentClickListener();
     });
+
+// Update copyright year in footer.
+const currentDate = new Date();
+document.getElementById('copyright-year').innerText = currentDate.getFullYear();

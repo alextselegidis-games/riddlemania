@@ -51,8 +51,8 @@ class Logger
             chmod($path, 0777);
         }
 
-        $handle = fopen($path, 'w+');
-        fwrite($handle, $message);
+        $handle = fopen($path, 'a+');
+        fwrite($handle, $message . PHP_EOL);
         fclose($handle);
     }
 

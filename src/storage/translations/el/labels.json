@@ -1,8 +1,15 @@
 {
   "back": "Πίσω",
   "notifications": "Ειδοποιήσεις",
-  "play": "Παίξε",
+  "continue": "Συνέχεια",
+  "newGame": "Νέο Παιχνίδι",
   "famousRiddles": "Διάσημοι Γρίφοι",
   "about": "Σχετικά",
-  "answer": "Απάντηση"
+  "answer": "Απάντηση",
+  "share": "Κοινοποίηση",
+  "submit": "Υποβολή",
+  "email": "Email",
+  "message": "Μήνυμα",
+  "feedback": "Feedback",
+  "congratulations": "Συγχαρητήρια"
 }

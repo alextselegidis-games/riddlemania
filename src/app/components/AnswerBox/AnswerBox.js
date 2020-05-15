@@ -12,8 +12,8 @@
 import renderAnswerBox from './AnswerBox.html';
 import {addNotification, openNotifications, closeNotifications, clearNotifications} from '../../services/Notification';
 import {translate, getLanguageCode} from '../../services/Language';
-import page from 'page';
-import './AnswerBox.pcss';
+import {MAX_ANSWER_LENGTH, toggleLoadingSpinner} from '../../services/Environment';
+import './AnswerBox.scss';
 
 /**
  * Answer Box Component
@@ -32,25 +32,49 @@ class AnswerBox {
     }
 
     /**
-     * Append to container element.
+     * Append to target element.
      *
-     * @param {HTMLElement} container The container element to be appended to.
+     * @param {HTMLElement} target The target element to be appended to.
      *
      * @return {AnswerBox} Class instance for chained method calls.
      */
-    appendTo(container) {
+    appendTo(target) {
+        const existingAnswerBox = target.querySelector('form.answer-box');
+
+        if (existingAnswerBox) {
+            target.innerHTML = ''; // Remove previous instance.
+        }
+
         const answerBox = document.createElement('div');
         answerBox.innerHTML = renderAnswerBox({
             answerPlaceholder: translate('answerPlaceholder', 'messages'),
-            answer: translate('answer', 'labels')
+            answer: translate('answer', 'labels'),
+            maxAnswerLength: MAX_ANSWER_LENGTH
         });
         answerBox
             .querySelector('form.answer-box')
             .addEventListener('submit', event => this._onFormSubmitListener(event));
-        container.appendChild(answerBox);
-        answerBox.querySelector('input[type=text]').focus();
+        target.appendChild(answerBox);
+        answerBox.querySelector('input').focus();
         return this;
     }
+
+    /**
+     * Display the failure animation.
+     *
+     * @param {String} message Message to be displayed.
+     */
+    _displayFailure(message) {
+        document.body.classList.add('failure');
+        addNotification(message);
+        openNotifications();
+        setTimeout(() => {
+            closeNotifications();
+            clearNotifications();
+            document.body.classList.remove('failure');
+        }, 3000);
+    }
+
 
     /**
      * Answer Box Form Submit Handler
@@ -67,6 +91,14 @@ class AnswerBox {
         // If the response is successful then navigate to the next riddle, otherwise display an error notification.
         const answer = document.querySelector('.answer-box input').value;
 
+        // Pre validate the answer.
+        if (!answer.length || answer.length > MAX_ANSWER_LENGTH) {
+            this._displayFailure(translate('invalidAnswer', 'messages'));
+            return;
+        }
+
+        toggleLoadingSpinner(true);
+
         this
             ._postAnswer(answer, getLanguageCode())
             .then(response => {
@@ -76,7 +108,7 @@ class AnswerBox {
                     openNotifications();
                     localStorage.setItem('r4u-riddle', response.nextRiddleHash);
                     setTimeout(() => {
-                        page(`#!/riddles/${response.nextRiddleHash}`);
+                        location.href = `#!/riddles/${response.nextRiddleHash}`;
                         closeNotifications();
                         clearNotifications();
                         document.body.classList.remove('success');
@@ -84,34 +116,18 @@ class AnswerBox {
                 } else if (response.success && !response.nextRiddleHash) {
                     document.body.classList.add('success');
                     addNotification(translate('validAnswer', 'messages'));
-                    addNotification(`<br><h4>${translate('endOfGame', 'messages')}</h4>`);
-                    openNotifications();
-                    setTimeout(() => {
-                        location.href = '#!/';
-                        closeNotifications();
-                        clearNotifications();
-                        document.body.classList.remove('success');
-                    }, 5000);
+                    location.href='#!/game-over';
                 } else {
-                    document.body.classList.add('failure');
-                    addNotification(translate('invalidAnswer', 'messages'));
-                    openNotifications();
-                    setTimeout(() => {
-                        closeNotifications();
-                        clearNotifications();
-                        document.body.classList.remove('failure');
-                    }, 3000);
+                    this._displayFailure(translate('invalidAnswer', 'messages'));
                 }
             })
             .catch(exception => {
-                addNotification('Could not post answer!');
-                openNotifications();
-                setTimeout(() => {
-                    closeNotifications();
-                    clearNotifications();
-                }, 3000);
+                this._displayFailure('Could not post answer!');
                 console.error('Could not post answer:', exception);
-            });
+            })
+            .finally(() => {
+                toggleLoadingSpinner(false);
+            })
     }
 
     /**
@@ -124,26 +140,17 @@ class AnswerBox {
      *
      * @private
      */
-    _postAnswer(answer, languageCode) {
-        return new Promise((resolve, reject) => {
-            const request = new XMLHttpRequest();
-            request.open('POST', `api.php/riddles/${this.hash}/validate?lang=${languageCode}`, true);
-            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-            request.onload = function() {
-                if (this.status >= 200 && this.status < 400) {
-                    resolve(JSON.parse(this.response));
-                } else {
-                    reject(this.response);
-                }
-            };
-
-            request.onerror = function() {
-                reject(this.response);
-            };
-
-            request.send(JSON.stringify({answer}));
+    async _postAnswer(answer, languageCode) {
+        const response = await fetch(`api.php/riddles/${this.hash}/validate?lang=${languageCode}`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({answer})
         });
+
+        return await response.json();
     }
 }
 

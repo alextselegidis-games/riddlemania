@@ -9,6 +9,8 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
+@import 'variables';
+
 .container:after,
 .row:after {
     content: '';

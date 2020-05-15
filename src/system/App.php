@@ -53,6 +53,11 @@ class App
     public $riddle;
 
     /**
+     * @var Notifications
+     */
+    public $notifications;
+
+    /**
      * App constructor.
      *
      * Provide the 'name', 'vendor', 'version', 'homepage', 'debug' and 'storagePath' properties in the
@@ -72,6 +77,7 @@ class App
         $this->output = new Output();
         $this->logger = new Logger($config['storagePath']);
         $this->riddle = new Riddle($config['storagePath']);
+        $this->notifications = new Notifications();
     }
 
     /**

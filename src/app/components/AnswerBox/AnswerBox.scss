@@ -9,12 +9,13 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
+@import '../../styles/variables';
 
 .answer-box {
+    max-width: 475px;
+
     .answer {
         margin-bottom: $margin-large;
-        width: 400px;
         text-align: left;
     }
 }

@@ -14,6 +14,8 @@ import MainMenu from '../containers/MainMenu/MainMenu';
 import About from '../containers/About/About';
 import FamousRiddles from '../containers/FamousRiddles/FamousRiddles';
 import Riddles from '../containers/Riddles/Riddles';
+import GameOver from '../containers/GameOver/GameOver';
+import Feedback from '../containers/Feedback/Feedback';
 
 /**
  * Available Application Routes
@@ -24,7 +26,9 @@ const routes = {
     '/': new MainMenu(),
     '/about': new About(),
     '/famous-riddles': new FamousRiddles(),
-    '/riddles': new Riddles()
+    '/riddles': new Riddles(),
+    '/game-over': new GameOver(),
+    '/feedback': new Feedback()
 };
 
 /**

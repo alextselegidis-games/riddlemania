@@ -9,8 +9,21 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
+@import '../../styles/variables';
+@import '../../styles/grid';
 
-.menu-item {
-    margin-bottom: $margin-large;
+.feedback {
+    background-color: $brand-secondary;
+
+    .notifications {
+        background-color: $brand-secondary !important;
+    }
+
+    form {
+        max-width: 600px;
+    }
+
+    #google-recaptcha {
+        margin: ($margin-large + $margin-base) 0 $margin-large 0;
+    }
 }

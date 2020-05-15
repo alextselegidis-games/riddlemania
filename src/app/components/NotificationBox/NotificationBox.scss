@@ -9,7 +9,7 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
+@import '../../styles/variables';
 
 .notification-box {
     float: right;
@@ -22,14 +22,14 @@
     .notifications {
         position: absolute;
         right: -13px;
-        padding: calc($padding-base * 1.5);
-        border-radius: $border-radius-base;
-        background: color(#FFF a(90%));
+        padding: $padding-base * 1.5;
+        border: 1px solid $border-color-light;
         text-align: right;
-        margin-top: calc($margin-base * 1.5);
+        margin-top: $margin-base * 1.5;
         max-width: 300px;
-        color: #656565;
-        box-shadow: 0px 2px 3px rgba(102, 102, 102, 0.42);
+        color: $text-color;
+        background-color: $brand-primary;
+        z-index: 100;
 
         ul {
             list-style: none;
@@ -40,13 +40,13 @@
 
         &:after {
             border: 10px solid transparent;
-            border-bottom-color: color(#FFF a(90%));
+            border-bottom-color: #FFF;
             content: '';
             display: block;
             height: 0;
             right: 13px;
             position: absolute;
-            top: -19px;
+            top: -21px;
             width: 0;
         }
     }
@@ -66,7 +66,7 @@
         width: 10%;
 
         img {
-            margin-top: calc($margin-base / 2);
+            margin-top: $margin-small;
         }
     }
 }

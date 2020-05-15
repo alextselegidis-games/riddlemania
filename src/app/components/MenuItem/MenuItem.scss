@@ -9,9 +9,8 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
-@import '../../grid.pcss';
+@import '../../styles/variables';
 
-.famous-riddles {
-    background-color: $brand-info;
+.menu-item {
+    margin-bottom: $margin-large;
 }

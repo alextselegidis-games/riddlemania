@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------------------- */
 
 import renderMenuBox from './MenuBox.html';
-import './MenuBox.pcss';
+import './MenuBox.scss';
 
 /**
  * Menu Box Component

@@ -9,29 +9,32 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-$brand-primary: #3176D8;
-$brand-secondary: #d2376b;
-$brand-info: #343074;
-$brand-success: #4CAF50;
-$brand-danger: #D84C31;
-$brand-warning: #DB923B;
-$brand-riddles: #009688;
+$brand-primary: #004099;
+$brand-secondary: #007599;
+$brand-info: #660099;
+$brand-success: #4caf74;
+$brand-danger: #99002a;
+$brand-warning: #990045;
+$brand-riddles: #4c0099;
 
 $text-color: #FFF;
 $border-color: #767676;
+$border-color-light: #FFF;
 
 $breakpoint-xs: 480px;
 $breakpoint-sm: 768px;
 $breakpoint-md: 992px;
 $breakpoint-lg: 1200px;
 
-$font-family: 'Advent Pro', Arial, Helvetica, sans-serif;
+$font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
 $font-size-base: 20px;
 
 $padding-base: 10px;
-$padding-large: calc($padding-base * 2);
+$padding-small: $padding-base / 2;
+$padding-large: $padding-base * 2;
 $margin-base: 10px;
-$margin-large: calc($margin-base * 2);
+$margin-small: $margin-base / 2;
+$margin-large: $margin-base * 2;
 $border-radius-base: 5px;
 
 $footer-height: 50px;

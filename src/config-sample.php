@@ -19,3 +19,15 @@ define('BASE_PATH', __DIR__);
 
 /** Defines the initial riddle hash. */
 define('INITIAL_RIDDLE_HASH', '28101d71d773c2d94ee80cb0d48a7477');
+
+/** Defines the secret key, used for server-side communication with Google. */
+define('GOOGLE_RECAPTCHA_SECRET_KEY', '');
+
+/** Defines the Mailgun API key. */
+define('MAILGUN_API_KEY', '');
+
+/** Contact to address. */
+define('CONTACT_EMAIL', 'riddles4udotcom@gmail.com');
+
+/** Reply to address. */
+define('REPLY_TO_EMAIL', 'no-reply@riddles4u.com');

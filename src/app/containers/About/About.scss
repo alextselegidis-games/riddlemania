@@ -9,9 +9,13 @@
  * @since       v1.0.0
  * ---------------------------------------------------------------------------- */
 
-@import '../../variables.pcss';
-@import '../../grid.pcss';
+@import '../../styles/variables';
+@import '../../styles/grid';
 
-.main-menu {
-    
+.about {
+    background-color: $brand-secondary;
+
+    .notifications {
+        background-color: $brand-secondary !important;
+    }
 }
